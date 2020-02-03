@@ -11,7 +11,7 @@ const path = require("path");
 // WHEN INTRODUCING USERS DO THIS:
 // INSTALL THESE DEPENDENCIES: passport-local, passport, bcrypt, express-session, connect-mongo
 // AND UN-COMMENT OUT FOLLOWING LINES:
-
+// New Commment
 const session = require("express-session");
 const passport = require("passport");
 
