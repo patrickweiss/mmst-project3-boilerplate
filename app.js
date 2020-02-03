@@ -20,13 +20,9 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/IQTTY", {
-    useNewUrlParser: true
-  })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/IQTTY", { useNewUrlParser: true })
   .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
+    console.log( `Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch(err => {
     console.error("Error connecting to mongo", err);
