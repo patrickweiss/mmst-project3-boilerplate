@@ -8,6 +8,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import TaskDetail from "./components/TaskDetail";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Iqresult from "./components/iq_result";
 
 class App extends React.Component {
   state = {
@@ -27,7 +28,15 @@ class App extends React.Component {
       return <Redirect to="/" />;
     }
   }
-
+/*
+  resultRoute = props => {
+    if (this.state.user) {
+      return <Iqresult {...props} />;
+    } else {
+      return <Redirect to="/" />
+    }
+  }
+*/
   render() {
     return (
       <div className="App">
@@ -45,6 +54,11 @@ class App extends React.Component {
             props => <ProjectDetail user={this.state.user} {...props} />
           }/>
           <Route exact path="/tasks/:id" component={TaskDetail} />
+
+          
+          <Route exact path="/result" render={
+            props => <Iqresult user={this.state.user} {...props}/>
+          }/>
         </Switch>
       </div>
     );

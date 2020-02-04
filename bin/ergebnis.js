@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Results = require('../models/results');
 
 
-mongoose.connect('mongodb://localhost/diagram-logic', {
+mongoose.connect('mongodb://localhost/IQTTY', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
