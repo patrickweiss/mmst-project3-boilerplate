@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/IQTTY', {
 
 const results = [
   {
-  userName: "ich",
+  userName: "Karin",
   testName: "Zweiter LetzterEintrag",
   elapsedTime: 4500,
   numberOfCases: 7,
