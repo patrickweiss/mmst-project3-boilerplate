@@ -9,6 +9,7 @@ import TaskDetail from "./components/TaskDetail"; */
 import IqSignup from "./components/iq_Signup";
 import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
+import IqResultlist from "./components/iq_Resultlist"
 
 
 
@@ -39,6 +40,14 @@ class App extends React.Component {
     }
   }
 
+  resultListRoute = props => {
+    if (this.state.user) {
+      return <IqResultlist {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -52,6 +61,7 @@ class App extends React.Component {
             props => <IqLogin {...props} setUser={this.setUser} />
           }/>
           <Route exact path="/training" render={this.trainingRoute}/>
+          <Route exact path="/resultlist" render={this.resultListRoute}/>
 {/* 
           <Route exact path="/projects" render={this.projectsRoute}/>
           <Route exact path="/projects/:id" render={
