@@ -32,9 +32,12 @@ button {
 
 .nav a {
   color: white;
-  margin: 5px;
+  margin: 15px;
 }
 
+nav{
+  height: 90px;
+}
 /* h1,
 h2 {
   margin-top: 20px;

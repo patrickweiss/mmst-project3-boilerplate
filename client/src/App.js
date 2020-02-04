@@ -46,7 +46,7 @@ class App extends React.Component {
       return <Redirect to="/" />;
     }
   }
-/*
+
   resultRoute = props => {
     if (this.state.user) {
       return <Iqresult {...props} />;
@@ -54,7 +54,7 @@ class App extends React.Component {
       return <Redirect to="/" />
     }
   }
-*/
+
   render() {
     return (
       <div className="App">
@@ -69,17 +69,7 @@ class App extends React.Component {
           }/>
           <Route exact path="/training" render={this.trainingRoute}/>
           <Route exact path="/resultlist" render={this.resultListRoute}/>
-{/* 
-          <Route exact path="/projects" render={this.projectsRoute}/>
-          <Route exact path="/projects/:id" render={
-            props => <ProjectDetail user={this.state.user} {...props} />
-          }/>
-          <Route exact path="/tasks/:id" component={TaskDetail} />
-           */}
-          
-          <Route exact path="/result" render={
-            props => <Iqresult user={this.state.user} {...props}/>
-          }/>
+          <Route exact path="/result" render={this.resultRoute}/>
         </Switch>
       </div>
     );
