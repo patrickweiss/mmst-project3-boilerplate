@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Results = require('../models/results');
 
 
-mongoose.connect('mongodb://localhost/diagram-logic', {
+mongoose.connect('mongodb://localhost/IQTTY', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
 const results = [
   {
-  userName: "ich",
+  userName: "Karin",
   testName: "Zweiter LetzterEintrag",
   elapsedTime: 4500,
   numberOfCases: 7,

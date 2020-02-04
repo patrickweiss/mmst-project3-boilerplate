@@ -20,13 +20,9 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/IQTTY", {
-    useNewUrlParser: true
-  })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/IQTTY", { useNewUrlParser: true })
   .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
+    console.log( `Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch(err => {
     console.error("Error connecting to mongo", err);
@@ -57,7 +53,7 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // ADD SESSION SETTINGS HERE:
@@ -96,5 +92,8 @@ app.use("/api/tasks", taskRoutes);
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+
+const userResult = require("./routes/results");
+app.use("/api/results", userResult);
 
 module.exports = app;

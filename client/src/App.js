@@ -10,8 +10,7 @@ import IqSignup from "./components/iq_Signup";
 import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
 import IqResultlist from "./components/iq_Resultlist"
-
-
+import Iqresult from "./components/iq_result";
 
 class App extends React.Component {
   state = {
@@ -47,7 +46,15 @@ class App extends React.Component {
       return <Redirect to="/" />;
     }
   }
-
+/*
+  resultRoute = props => {
+    if (this.state.user) {
+      return <Iqresult {...props} />;
+    } else {
+      return <Redirect to="/" />
+    }
+  }
+*/
   render() {
     return (
       <div className="App">
@@ -69,6 +76,10 @@ class App extends React.Component {
           }/>
           <Route exact path="/tasks/:id" component={TaskDetail} />
            */}
+          
+          <Route exact path="/result" render={
+            props => <Iqresult user={this.state.user} {...props}/>
+          }/>
         </Switch>
       </div>
     );
