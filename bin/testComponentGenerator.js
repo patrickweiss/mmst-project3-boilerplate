@@ -1,19 +1,11 @@
-const numOfCycles = 1;  //number of generator cycles (INPUT)
-                        //1 cycle = up to 30 components
-
 const mongoose = require('mongoose');
 const TestComponent = require('../models/testComponents');
 
-const dbName = 'diagram-logic';
+const dbName = 'IQTTY';
 mongoose.connect(`mongodb://localhost/${dbName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-
-//=====================================================
-// module.exports = function cappuccino () {
-
 
 
 const testComponent = {   
@@ -46,7 +38,7 @@ const operations = [
 ]; 
 
 console.log("==========================================================================================");
-for (let i = 0; i < numOfCycles; i++) {
+
   for (cat of categories) {
     testComponent.catName = cat.name;
     ["A","B","C","F"].includes(cat.name) ? genArgsUnrestricted() : genArgsRestricted();
@@ -87,7 +79,7 @@ for (let i = 0; i < numOfCycles; i++) {
     });
 
   }  //end of category processing
-}  //end of cycle
+
 
 console.log("Generated: " + countComponents + " components");
 
