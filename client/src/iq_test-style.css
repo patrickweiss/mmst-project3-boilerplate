@@ -1,0 +1,99 @@
+
+#header {
+  margin-left: 25px; 
+}
+
+.menu-btn-off {
+    background-color: white;
+    color: black;
+    border: 3px solid green; 
+    border-radius: 5px;
+    margin: 2px;;
+    width:60px;
+    height:60px;
+    padding: 3px
+}
+
+.menu-btn-on {
+  background-color: white;
+  color: black;
+  border: 3px solid orange; 
+  border-radius: 5px;
+  margin: 2px;;
+  width:60px;
+  height:60px;
+  padding: 3px
+}
+
+.nav-btn {
+  width: 160px;
+  border: solid;
+  border: 3px solid green; 
+  color: black;
+  border-radius: 8px;
+  margin: 10px;
+  /* font-size: 48px; */
+  vertical-align: middle;  
+}
+
+.nav-btn-init {
+  width: 160px;
+  border: solid;
+  color: red;
+  border: 3px solid red; 
+  border-radius: 8px;
+  margin: 10px;
+  /*font-size: 32px;*/
+  vertical-align: middle;  
+}
+
+#test-container {
+  /*position: relative;*/
+  /*z-index: 1;*/
+  width:350px;
+  display: flex;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+#test-and-loader {
+  padding-top: 20px;
+  width: 400px;
+  display: flex;
+  align-content: space-between;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+}
+
+#nav-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.menu-row {
+  margin-left: 20px;
+  width : 200px;
+  display:flex;
+  justify-content: space-between;
+
+}
+
+.board-row {
+  width : 200px;
+  display:flex;
+  justify-content: flex-start;
+}
+
+.board-cell {
+    border: solid lightgray;
+    margin: 2px;
+    width:56px;
+    height:56px;
+}
+
+.canvas-matrix {
+  margin: 0;
+}
+
