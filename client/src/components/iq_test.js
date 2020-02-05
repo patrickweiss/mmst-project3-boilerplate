@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../iq_test-style.css';
 import TestCase from './iq_test-case.js';
+import Iqresult from "./iq_result";
 import axios from 'axios';
 
 export default class IQttyTest extends Component {
@@ -100,7 +101,7 @@ export default class IQttyTest extends Component {
     //Suggestion: store the testId as well
 
     const testResult = { 
-      userName: "",
+      userName: this.props.userName, 
       testName: this.state.test.testName,
       complexity: this.state.test.complexity,
       elapsedTime: (this.testTime/1000).toFixed(1),
@@ -142,10 +143,7 @@ export default class IQttyTest extends Component {
     if (this.state.endOfTest) {
       return (
         <div>
-            <h1>End of Test. </h1>
-            <h2>Answers:   {JSON.stringify(this.state.answers)} </h2>
-            <h2>Test time: {(this.testTime/1000).toFixed(1)}  seconds</h2>
-            <h2>Score:     {this.currentScore} / {this.state.cases.length} </h2>
+          <Iqresult />
         </div>
       );  //=> result page
     }
