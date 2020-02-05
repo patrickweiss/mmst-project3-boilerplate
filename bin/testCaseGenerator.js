@@ -1,13 +1,11 @@
 //INPUTS
-const numOfCases = 1;  //number of cases to generate
-const numOfComponents = 1;   //number of test components per case
-
+const numOfComponents = 2;   //number of test components per case
 
 const mongoose = require('mongoose');
 const TestCase = require('../models/testCases');
 const TestComponent = require('../models/testComponents');
 
-const dbName = 'diagram-logic';
+const dbName = 'IQTTY';
 mongoose.connect(`mongodb://localhost/${dbName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -71,8 +69,7 @@ console.log("Categories selected for this case: " + selectedCats);
 TestComponent.find()
 .then(docs => {
     //mongoose.connection.close();
-    for (k = 0; k < numOfCases; k++)
-      createTestCases(docs);
+    createTestCases(docs);
 });   
 
 function createTestCases(comps) {

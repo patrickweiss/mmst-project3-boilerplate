@@ -1,11 +1,11 @@
-const numOfCases = 1;          //number of cases in the test
-const maxCaseComplexity = 1;    //max case complexity 1-Low, 2-Medium, 3-High
+const numOfCases = 2;          //number of cases in the test
+const maxCaseComplexity = 3;    //max case complexity 1-Low, 2-Medium, 3-High
 
 const mongoose = require('mongoose');
 const TestCase = require('../models/testCases');
 const Test = require('../models/tests');
 
-const dbName = 'diagram-logic';
+const dbName = 'IQTTY';
 mongoose.connect(`mongodb://localhost/${dbName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true

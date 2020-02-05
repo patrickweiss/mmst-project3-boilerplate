@@ -1,4 +1,7 @@
-import React from "react";
+//import React, { Component } from 'react';
+import React from 'react';
+import './App.css';
+import IQttyTest from "./components/iq_test.js";
 import "./App.css";
 import {Switch, Route, Redirect } from "react-router-dom";
 import IqNavbar from "./components/iq_Navbar";
@@ -13,24 +16,18 @@ import IqResultlist from "./components/iq_Resultlist";
 import Iqresult from "./components/iq_result";
 import IqAdmin from "./components/iq_admin.js";
 
-class App extends React.Component {
+export default class App extends React.Component {
+
   state = {
     user: this.props.user
-  };
+
+  }
 
   setUser = user => {
     this.setState({
       user: user
-    });
-  };
-
-  /* projectsRoute = props => {
-    if (this.state.user) {
-      return <Projects {...props} />;
-    } else {
-      return <Redirect to="/" />;
-    }
-  } */
+    })
+  }
 
   trainingRoute = props => {
     if (this.state.user) {
@@ -50,15 +47,41 @@ class App extends React.Component {
 
   resultRoute = props => {
     if (this.state.user) {
-      return <Iqresult {...props} />;
+      return <Iqresult />;   
     } else {
       return <Redirect to="/" />
     }
   }
 
-  render() {
+  testRoute = props => {
+    if (this.state.user) {
+      return <IQttyTest testId={"random"} userName={this.state.user.username} />;
+    } else {
+      return <Redirect to="/" />
+    }
+  }
+
+  render () {
+
+    //const currentTest = testData[0];
+  /* projectsRoute = props => {
+    if (this.state.user) {
+      return <Projects {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  } */
+
+ 
+
+  
+
+
+
     return (
+              
       <div className="App">
+      {/* <IQttyTest testId={"random"}/> */}
         <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route exact path="/" component={IqStartpage} />
@@ -72,14 +95,23 @@ class App extends React.Component {
           <Route exact path="/resultlist" render={this.resultListRoute}/>
           <Route exact path="/xadmin" component={IqAdmin}/>
           <Route exact path="/result" render={
+
+          <Route exact path="/test/new" render={this.testRoute}/>
+{/* 
+          <Route exact path="/projects" render={this.projectsRoute}/>
+          <Route exact path="/projects/:id" render={
+            props => <ProjectDetail user={this.state.user} {...props} />
+          }/>
+          <Route exact path="/tasks/:id" component={TaskDetail} />
+           */}
+          
+          {/* <Route exact path="/result" render={
             props => <Iqresult user={this.state.user} {...props}/>
-          }/>          
+          }/> */}          
 
           <Route exact path="/result" render={this.resultRoute}/>
         </Switch>
       </div>
-    );
+    )
   }
 }
-
-export default App;
