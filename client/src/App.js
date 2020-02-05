@@ -47,6 +47,14 @@ class App extends React.Component {
     }
   }
 
+  resultRoute = props => {
+    if (this.state.user) {
+      return <Iqresult {...props} />;
+    } else {
+      return <Redirect to="/" />
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,6 +81,7 @@ class App extends React.Component {
             props => <Iqresult user={this.state.user} {...props}/>
           }/>          
 
+          <Route exact path="/result" render={this.resultRoute}/>
         </Switch>
       </div>
     );

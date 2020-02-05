@@ -17,6 +17,8 @@ const IqNavbar = props => {
         <div>
           <Link to="/">Welcome {props.user.username}</Link>
           <Link to="/training">Training</Link>
+          <Link to="/result">Result</Link>
+          <Link to="/resultlist">Resultlist</Link>
           <Link to="/" onClick={handleLogout}>
             Logout
           </Link>
