@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../stylesheets/iq_result.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export class Iqresult extends Component {
     state = {
@@ -73,7 +74,7 @@ export class Iqresult extends Component {
           <form action="/training">
             <input className="rbutton" type="submit" value="Training" />
           </form>
-
+          <Link to="/resultlist">Resultlist</Link>
           <form action="/resultlist">
             <input className="rbutton" type="submit" value="Resultlist" />
           </form>
