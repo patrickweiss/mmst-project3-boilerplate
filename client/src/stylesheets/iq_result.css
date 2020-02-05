@@ -13,33 +13,41 @@
 }
 
 /* Tabelle für iq_result */
-.table { 
+.tableresult { 
       display: table;
       margin-top: 100px;
       display: table; 
       border-collapse:collapse; 
       font-size: xx-large;
-      width: 600px;
+      width: 800px;
     }
-.tr { 
+.resulttr { 
       display:table-row;
+      line-height: 35px;
     }
-.tr1 { 
+.resulttr1 { 
       display:table-row;
-      background-color: rgb(145, 218, 243);
+      /*background-color: rgb(145, 218, 243);*/
+      background-color:  #007bff;
+      line-height: 35px;
+      color: white;
     }
-.td { 
+.resulttd { 
       display:table-cell; 
       text-align: left;
   
       padding:5px; 
     }
-.th {
+.resultth {
   display:table-cell; 
   text-align: left;
   
   padding:5px; 
   font-weight: bold;
+}
+/* result footer*/
+.resultfooter {
+  margin-top: 35px;
 }
 
 /* Buttonbox uand button */
@@ -48,10 +56,10 @@
   border-radius: 4px;
   height: 50px;
   width: 160px;
-  background-color: #2081c3;
+  background-color:  #007bff;
   color: white;
   margin: 15px;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .rbutton:hover {
@@ -63,6 +71,7 @@
   display: flex;
   justify-content: space-around;
   padding: 25px;
+  width: 600px;
 }
 
 /* <<<<<<<<<<< ENDE Tabelle iq_result >>>>>>>>>> */
