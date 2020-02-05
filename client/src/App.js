@@ -81,7 +81,6 @@ export default class App extends React.Component {
     return (
               
       <div className="App">
-      {/* <IQttyTest testId={"random"}/> */}
         <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route exact path="/" component={IqStartpage} />
@@ -94,21 +93,7 @@ export default class App extends React.Component {
           <Route exact path="/training" render={this.trainingRoute}/>
           <Route exact path="/resultlist" render={this.resultListRoute}/>
           <Route exact path="/xadmin" component={IqAdmin}/>
-          <Route exact path="/result" render={
-
           <Route exact path="/test/new" render={this.testRoute}/>
-{/* 
-          <Route exact path="/projects" render={this.projectsRoute}/>
-          <Route exact path="/projects/:id" render={
-            props => <ProjectDetail user={this.state.user} {...props} />
-          }/>
-          <Route exact path="/tasks/:id" component={TaskDetail} />
-           */}
-          
-          {/* <Route exact path="/result" render={
-            props => <Iqresult user={this.state.user} {...props}/>
-          }/> */}          
-
           <Route exact path="/result" render={this.resultRoute}/>
         </Switch>
       </div>
