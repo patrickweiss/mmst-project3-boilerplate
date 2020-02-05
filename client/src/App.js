@@ -9,8 +9,9 @@ import TaskDetail from "./components/TaskDetail"; */
 import IqSignup from "./components/iq_Signup";
 import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
-import IqResultlist from "./components/iq_Resultlist"
+import IqResultlist from "./components/iq_Resultlist";
 import Iqresult from "./components/iq_result";
+import IqAdmin from "./components/iq_admin.js";
 
 class App extends React.Component {
   state = {
@@ -69,14 +70,7 @@ class App extends React.Component {
           }/>
           <Route exact path="/training" render={this.trainingRoute}/>
           <Route exact path="/resultlist" render={this.resultListRoute}/>
-{/* 
-          <Route exact path="/projects" render={this.projectsRoute}/>
-          <Route exact path="/projects/:id" render={
-            props => <ProjectDetail user={this.state.user} {...props} />
-          }/>
-          <Route exact path="/tasks/:id" component={TaskDetail} />
-           */}
-          
+          <Route exact path="/xadmin" component={IqAdmin}/>
           <Route exact path="/result" render={
             props => <Iqresult user={this.state.user} {...props}/>
           }/>          
