@@ -10,10 +10,10 @@ mongoose.connect('mongodb://localhost/IQTTY', {
 const results = [
   {
   userName: "Karin",
-  testName: "Zweiter LetzterEintrag",
-  elapsedTime: 4500,
-  numberOfCases: 7,
-  score: 4,
+  testName: "2ter Test",
+  elapsedTime: 4501,
+  numberOfCases: 8,
+  score: 5,
   complexity: "Medium"
   },
   {

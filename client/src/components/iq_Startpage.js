@@ -1,5 +1,5 @@
 import React from "react";
-import '../startpage.css';
+import '../stylesheets/iq_startpage.css';
 
 class IqStartpage extends React.Component {
     render() {

@@ -96,4 +96,7 @@ app.use("/api/auth", authRoutes);
 const userResult = require("./routes/results");
 app.use("/api/results", userResult);
 
+const resultListRoute = require("./routes/iq_resultlist");
+app.use("/api/resultlist", resultListRoute);
+
 module.exports = app;
