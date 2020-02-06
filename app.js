@@ -11,7 +11,7 @@ const path = require("path");
 // WHEN INTRODUCING USERS DO THIS:
 // INSTALL THESE DEPENDENCIES: passport-local, passport, bcrypt, express-session, connect-mongo
 // AND UN-COMMENT OUT FOLLOWING LINES:
-
+// New Commment
 const session = require("express-session");
 const passport = require("passport");
 
@@ -20,13 +20,9 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/project-management-server", {
-    useNewUrlParser: true
-  })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/IQTTY", { useNewUrlParser: true })
   .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
+    console.log( `Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch(err => {
     console.error("Error connecting to mongo", err);
@@ -57,6 +53,7 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
@@ -85,16 +82,29 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 // ROUTES MIDDLEWARE STARTS HERE:
 
-const index = require("./routes/index");
-app.use("/", index);
+/* const index = require("./routes/index");
+app.use("/", index); */
 
-const projectRoutes = require("./routes/project");
+const xadmin = require('./routes/admin.js');
+app.use('/', xadmin);
+
+/* const projectRoutes = require("./routes/project");
 app.use("/api/projects", projectRoutes);
 
 const taskRoutes = require("./routes/task");
-app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks", taskRoutes); */
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+
+
+// IQTTY routes middleware
+app.use('/api', require('./routes/iq_test-api'));
+//app.use('/api', require('./routes/iq_results-api'));
+const userResult = require("./routes/results");
+app.use("/api/results", userResult);
+
+const resultListRoute = require("./routes/iq_resultlist");
+app.use("/api/resultlist", resultListRoute);
 
 module.exports = app;

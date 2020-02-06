@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Navbar as Nav } from "react-bootstrap";
 import { logout } from "../services/auth";
 
-const Navbar = props => {
+const IqNavbar = props => {
   const handleLogout = () => {
     // destroys the session on the server
     logout();
@@ -16,10 +16,11 @@ const Navbar = props => {
       {props.user ? (
         <div>
           <Link to="/">Welcome {props.user.username}</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/" onClick={handleLogout}>
-            Logout
-          </Link>
+          <Link to="/training">Training</Link>
+          <Link to="/test/new">TestNew</Link>
+          <Link to="/result">Result</Link>
+          <Link to="/resultlist">Resultlist</Link>
+          <Link to="/" onClick={handleLogout}>Logout</Link>
         </div>
       ) : (
         <div>
@@ -32,4 +33,4 @@ const Navbar = props => {
   );
 };
 
-export default Navbar;
+export default IqNavbar;

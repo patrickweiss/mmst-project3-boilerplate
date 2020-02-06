@@ -1,0 +1,9 @@
+/* Tabelle für iq_result */
+.tableAdmin { 
+    display: table;
+    margin-top: 100px;
+    display: table; 
+    border-collapse:collapse; 
+    font-size: xx-large;
+    width: 800px;
+  }
