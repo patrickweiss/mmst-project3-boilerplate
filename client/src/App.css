@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -48,11 +48,11 @@ h2 {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.projects-container {
+/* .projects-container {
   display: flex;
   padding: 5vh 5vw;
 }
 
 .projects-container > * {
   flex: 1;
-}
+} */

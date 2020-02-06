@@ -159,11 +159,11 @@ export default class IQttyTest extends Component {
                       Case: {this.state.currentCaseIdx + 1} / {this.state.cases.length}
                     </h3>
                 </div>   
-                <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>  
+                <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
             </div>
             <div>
               <img src="../loader.gif" alt="" width="300"/>
-            </div>
+            </div>            
         </div>
       );
     }

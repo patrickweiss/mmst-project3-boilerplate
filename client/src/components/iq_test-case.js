@@ -79,10 +79,10 @@ export default class TestCase extends Component {
                             </div>
                         </div>
                         <div id="nav-buttons">
-                            <button className={init ? "nav-btn-init": "nav-btn"}   
-                                    onClick={this.nextCaseHandler}><h3>{init ? "Start Test": "Submit"}</h3></button>
+                            <button className={init ? "nav-btn-init shake": "nav-btn"}   
+                                    onClick={this.nextCaseHandler}> {init ? "Start Test": "Submit"} </button>
                             <button className="nav-btn"  
-                                    onClick={this.resetAnswerHandler}><h3>Reset</h3></button>
+                                    onClick={this.resetAnswerHandler}>Reset</button>
                         </div>
                     </div>
                 </div>

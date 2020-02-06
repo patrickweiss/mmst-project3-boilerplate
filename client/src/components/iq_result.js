@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../stylesheets/iq_result.css';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {NavLink} from 'react-router-dom';

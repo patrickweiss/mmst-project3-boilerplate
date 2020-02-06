@@ -1,6 +1,5 @@
-
 #header {
-  margin-left: 25px; 
+  margin-left: 25px;    
 }
 
 .menu-btn-off {
@@ -11,14 +10,15 @@
     margin: 2px;;
     width:60px;
     height:60px;
-    padding: 3px
+    padding: 3px;    
+  
 }
 
 .menu-btn-on {
   background-color: white;
   color: black;
   border: 3px solid orange; 
-  border-radius: 5px;
+  border-radius: 4px;
   margin: 2px;;
   width:60px;
   height:60px;
@@ -26,26 +26,47 @@
 }
 
 .nav-btn {
-  width: 160px;
-  border: solid;
-  border: 3px solid green; 
-  color: black;
-  border-radius: 8px;
+  width: 160px;  
+  border: 3px solid #2081c3;
+  background-color: #2081c3; 
+  color: white;
+  border-radius: 4px;
   margin: 10px;
-  /* font-size: 48px; */
-  vertical-align: middle;  
+  padding: 7px;  
+  font-size: 15px;
+}
+.nav-btn:hover {
+  background-color: green;
+  color: white;
 }
 
 .nav-btn-init {
   width: 160px;
   border: solid;
-  color: red;
-  border: 3px solid red; 
-  border-radius: 8px;
+  color: white;
+  border: 3px solid green;
+  background-color: green; 
+  border-radius: 4px;
   margin: 10px;
-  /*font-size: 32px;*/
-  vertical-align: middle;  
+  padding: 7px;
+  font-size: 15px;     
 }
+
+
+@keyframes shake {
+	25%
+		{-webkit-transform: translateX(5px);
+		transform: translateX(5px)}
+	75%
+		{-webkit-transform: translateX(-5px);
+		transform: translateX(-5px)}
+}
+
+.shake:hover {
+  -webkit-animation: shake ease-in 70ms infinite;
+  animation: shake 70ms ease-in infinite
+}
+
 
 #test-container {
   /*position: relative;*/
