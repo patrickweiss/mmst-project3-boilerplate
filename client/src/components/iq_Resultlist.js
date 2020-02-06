@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../stylesheets/iq_resultlist.css'
+import '../stylesheets/iq_resultlist.css';
+import { Link } from "react-router-dom";
 
 class IqResultlist extends Component {
   state = {
@@ -37,6 +38,13 @@ class IqResultlist extends Component {
           <div className="tdResultlist">{result.numberOfCases}</div>
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
+          <button className="trainingsPage-button">          
+            {/* <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/5e3abf53a48cd635d04e4f63">Start Again</Link> */}
+            
+          </button>
+          <button className="trainingsPage-button">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/new">Review</Link>            
+          </button>
         </div>
       )
 
@@ -57,6 +65,7 @@ class IqResultlist extends Component {
                   <div className="thResultlist">Number of Test Cases</div>
                   <div className="thResultlist">Score</div>
                   <div className="thResultlist">Result</div>
+                  <div className="thResultlist"></div>
                 </div>
                   
                 {resultList}            

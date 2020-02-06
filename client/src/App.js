@@ -58,7 +58,7 @@ export default class App extends React.Component {
           this.state.user.username
       );
       return (
-        <IQttyTest testId={"random"} userName={this.state.user.username} />
+        <IQttyTest testId={"random"} userName={this.state.user.username} />        
       );
     } else {
       return <Redirect to="/" />;
