@@ -50,7 +50,7 @@ export default class IQttyTest extends Component {
       //check answer and update score
       this.currentScore = this.answerCorrect(answer) ? this.currentScore + 1 : this.currentScore;
 
-      this.finishTest();
+      this.finishTest(answersCopy);
 
       this.setState({answers: answersCopy,
                      animOn: false,
@@ -95,7 +95,7 @@ export default class IQttyTest extends Component {
     return correct;
   }
 
-  finishTest() {
+  finishTest(answers) {
 
     //NOTE: In order to store answers, a model extension will be required
     //Suggestion: store the testId as well
@@ -106,8 +106,15 @@ export default class IQttyTest extends Component {
       complexity: this.state.test.complexity,
       elapsedTime: (this.testTime/1000).toFixed(1),
       numberOfCases: this.state.test.cases.length,
-      score: this.currentScore
+      score: this.currentScore,
+      answers: answers,
+      testID: this.state.test._id
+  
+
     }
+
+    console.log(">>>>>>>> STORING RESULT: ", testResult);
+
 
     //Send result to the DB
     axios.post("/api/results", testResult) 
@@ -124,13 +131,14 @@ export default class IQttyTest extends Component {
     if (this.props.testId === "random")
       axios.get(`/api/tests/random`)  
         .then(resFromApi => {
+          console.log(">>> RANDOM TEST: ", resFromApi.data);
           this.setState({
             test: resFromApi.data.testData,
             cases: resFromApi.data.arrayOfCases
           })
         });
     else 
-      axios.get(`/api/tests/${this.props.testId}`)
+      axios.get(`/api/tests/id/${this.props.testId}`)
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
