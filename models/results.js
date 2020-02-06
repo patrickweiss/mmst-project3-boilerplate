@@ -7,13 +7,13 @@ const resultSchema = new Schema ({
   complexity: String,
   elapsedTime: Number,
   numberOfCases: Number,
-  score: Number
+  score: Number,
+  testId: {type: Schema.Types.ObjectId, ref: "Test"},  
+  answers: Array
 },
 {
   timestamps: true
 });
-
-
 
 
 const Result = mongoose.model("Result", resultSchema);

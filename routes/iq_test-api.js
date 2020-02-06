@@ -10,11 +10,6 @@ const Result = require("../models/results");
 // Get a random test with its cases
 router.get("/tests/random", (req, res, next) => {
 
-  //if (!req.session.user){
-  //  res.redirect('/login');
-  //  return;
-  //}
-
   Test.find()
     .then (tests => {
       const n = Math.floor(Math.random() * tests.length);
@@ -37,7 +32,7 @@ router.get("/tests/id/:testId", (req, res, next) => {
 
     Test.findById(req.params.testId)
     .then (tests => {
-      const testData = tests[0];
+      const testData = tests;
       TestCase.find({ _id: {$in: testData.cases}})
         .then (arrayOfCases => {
           res.json({testData, arrayOfCases});
