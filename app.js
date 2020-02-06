@@ -54,6 +54,7 @@ app.use(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // ADD SESSION SETTINGS HERE:
@@ -81,14 +82,17 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 // ROUTES MIDDLEWARE STARTS HERE:
 
-const index = require("./routes/index");
-app.use("/", index);
+/* const index = require("./routes/index");
+app.use("/", index); */
 
-const projectRoutes = require("./routes/project");
+const xadmin = require('./routes/admin.js');
+app.use('/', xadmin);
+
+/* const projectRoutes = require("./routes/project");
 app.use("/api/projects", projectRoutes);
 
 const taskRoutes = require("./routes/task");
-app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks", taskRoutes); */
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);

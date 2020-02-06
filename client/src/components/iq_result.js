@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import '../stylesheets/iq_result.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 
 export class Iqresult extends Component {
     state = {
       result: []
     };
+
+    handle
 
     componentDidMount() {
       console.log("App --> componentDidMount()")
@@ -71,20 +75,17 @@ export class Iqresult extends Component {
         </div>
 
         <div className="buttonbox">
-          {/* <form action="/training">
-            <input className="rbutton" type="submit" value="Training" />
-          </form> */}
-
-          {/* <form action="/resultlist">
-            <input className="rbutton" type="submit" value="Resultlist" />
-          </form> */}
-           
-           <button className="rbutton">
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="/training">Training</Link>            
+          
+          <button className="rbutton"> 
+          <Link to="/training" style={{color:'white', textDecoration:'none'}}>
+          Training
+          </Link>
           </button>
 
-          <button className="rbutton">
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="/resultlist">Resultlist</Link>            
+         <button className="rbutton"> 
+          <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
+          Resultlist
+          </Link>
           </button>
 
         </div>
