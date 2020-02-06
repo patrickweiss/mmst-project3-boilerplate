@@ -62,6 +62,10 @@
   font-size: 25px;
 }
 
+.rLink {
+  color: white;
+}
+
 .rbutton:hover {
   background-color: green;
   color: white;

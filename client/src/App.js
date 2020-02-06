@@ -14,7 +14,7 @@ import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
 import IqResultlist from "./components/iq_Resultlist";
 import Iqresult from "./components/iq_result";
-import IqAdmin from "./components/iq_admin.js";
+/* import IqAdmin from "./components/iq_admin.js/index.js.js"; */
 
 export default class App extends React.Component {
   state = {
@@ -93,7 +93,7 @@ export default class App extends React.Component {
           />
           <Route exact path="/training" render={this.trainingRoute} />
           <Route exact path="/resultlist" render={this.resultListRoute} />
-          <Route exact path="/xadmin" component={IqAdmin} />
+          {/* <Route exact path="/xadmin" component={IqAdmin} /> */}
 
           <Route exact path="/result" render={this.resultRoute} />
         </Switch>

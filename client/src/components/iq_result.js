@@ -8,6 +8,8 @@ export class Iqresult extends Component {
       result: []
     };
 
+    handle
+
     componentDidMount() {
       console.log("App --> componentDidMount()")
       axios.get("/api/results")
@@ -71,13 +73,19 @@ export class Iqresult extends Component {
         </div>
 
         <div className="buttonbox">
-          <form action="/training">
-            <input className="rbutton" type="submit" value="Training" />
-          </form>
-          <Link to="/resultlist">Resultlist</Link>
-          <form action="/resultlist">
-            <input className="rbutton" type="submit" value="Resultlist" />
-          </form>
+          
+          <button className="rbutton"> 
+          <Link to="/training" className="rLink">
+          Training
+          </Link>
+          </button>
+
+         <button className="rbutton"> 
+          <Link to="/resultlist" className="rLink">
+          Resultlist
+          </Link>
+          </button>
+
         </div>
       </div>
     );
