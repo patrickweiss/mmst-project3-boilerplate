@@ -31,11 +31,13 @@
   color: white;
   border-radius: 4px;  
   font-size: 15px;
+  margin-bottom: 2rem; 
 }
+
 .trainingsPage-button:hover {
   background-color: green;
   color: white;
 }
-.trainingsPage-button-box {    
+/* .trainingsPage-button-box {    
   margin-bottom: 2rem;
-}
+} */

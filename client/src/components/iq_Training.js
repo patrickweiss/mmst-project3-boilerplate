@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "../stylesheets/iq_training.css"
+import { Link } from "react-router-dom";
 
 class IqTraining extends Component {
   render() {
@@ -12,12 +13,17 @@ class IqTraining extends Component {
           <p>Your task is to discover logical connections and compose the empty box based on the rule you found.</p>
           <p>Click here to start a test</p>
           
-          <form className="trainingsPage-button-box" action = "/test/new" >          
+         {/*  <form className="trainingsPage-button-box" action = "/test/new" >          
               <input className="trainingsPage-button" type="submit" value="Start test"/>
-          </form>    
+          </form> */}
+
+          <button className="trainingsPage-button">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/new">Start test</Link>            
+          </button>    
           
           <p>Your results you can find under
-            <a href="/resultlist"> Test Result List</a>
+            {/* <a href="/resultlist"> Test Result List</a> */}
+            <Link to="/resultlist"> Test Result List</Link>
           </p>        
         </div>
       </section>

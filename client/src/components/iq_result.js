@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../stylesheets/iq_result.css';
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export class Iqresult extends Component {
@@ -70,13 +71,22 @@ export class Iqresult extends Component {
         </div>
 
         <div className="buttonbox">
-          <form action="/training">
+          {/* <form action="/training">
             <input className="rbutton" type="submit" value="Training" />
-          </form>
+          </form> */}
 
-          <form action="/resultlist">
+          {/* <form action="/resultlist">
             <input className="rbutton" type="submit" value="Resultlist" />
-          </form>
+          </form> */}
+           
+           <button className="rbutton">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/training">Training</Link>            
+          </button>
+
+          <button className="rbutton">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/resultlist">Resultlist</Link>            
+          </button>
+
         </div>
       </div>
     );
