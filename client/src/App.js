@@ -54,8 +54,6 @@ export default class App extends React.Component {
   testRoute = props => {
     if (this.state.user) {
       console.log(
-        "Ich rufe jetzt die Testseite auf. User gefunden" +
-          this.state.user.username
       );
       return (
         <IQttyTest testId={"random"} userName={this.state.user.username} />        
@@ -66,14 +64,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    //const currentTest = testData[0];
-    /* projectsRoute = props => {
-    if (this.state.user) {
-      return <Projects {...props} />;
-    } else {
-      return <Redirect to="/" />;
-    }
-  } */
 
     return (
       <div className="App">

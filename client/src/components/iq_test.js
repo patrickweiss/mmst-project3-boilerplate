@@ -91,7 +91,7 @@ export default class IQttyTest extends Component {
   answerCorrect(answer) { 
     const sysAnswer = this.state.cases[this.state.currentCaseIdx].line3.result;
     const correct = (parseInt(answer,16) === parseInt(sysAnswer,16)); 
-    console.log(">>> System answer: " + sysAnswer + " Your answer: " + answer + " is " + correct );
+    //console.log(">>> System answer: " + sysAnswer + " Your answer: " + answer + " is " + correct );
     return correct;
   }
 
@@ -108,18 +108,14 @@ export default class IQttyTest extends Component {
       numberOfCases: this.state.test.cases.length,
       score: this.currentScore,
       answers: answers,
-      testID: this.state.test._id
+      testId: this.state.test._id
   
-
     }
-
-    console.log(">>>>>>>> STORING RESULT: ", testResult);
-
 
     //Send result to the DB
     axios.post("/api/results", testResult) 
       .then(fromServer => {  
-        console.log("Result stored. Response from server: " + fromServer.data);
+        //console.log("Result stored. Response from server: " + fromServer.data);
       })
       .catch(err => {
         console.log("ERROR while storing the test result: ", err);
@@ -131,7 +127,6 @@ export default class IQttyTest extends Component {
     if (this.props.testId === "random")
       axios.get(`/api/tests/random`)  
         .then(resFromApi => {
-          console.log(">>> RANDOM TEST: ", resFromApi.data);
           this.setState({
             test: resFromApi.data.testData,
             cases: resFromApi.data.arrayOfCases
