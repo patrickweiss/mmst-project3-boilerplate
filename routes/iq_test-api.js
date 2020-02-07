@@ -50,10 +50,14 @@ router.get("/tests/id/:testId", (req, res, next) => {
 router.post("/results", (req, res, next) => {
   const testResult = req.body;
   //testResult.userName = req.session.user.userName;
-  console.log ("#### Result to be stored: " + JSON.stringify(testResult));
+  //console.log ("#### Result to be stored: " + JSON.stringify(testResult));
+  testResult.testId = mongoose.Types.ObjectId(testResult.testId);
+  //console.log ("#### Result with ObjectID: " + JSON.stringify(testResult));
   Result.create(testResult)
-  .then();
-
+  .then()
+  .catch((err) => {
+    console.log(err)
+  })
 });
 
 
