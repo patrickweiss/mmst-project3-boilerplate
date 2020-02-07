@@ -50,7 +50,7 @@ export default class IQttyTest extends Component {
       //check answer and update score
       this.currentScore = this.answerCorrect(answer) ? this.currentScore + 1 : this.currentScore;
 
-      this.finishTest();
+      this.finishTest(answersCopy);
 
       this.setState({answers: answersCopy,
                      animOn: false,
@@ -91,11 +91,11 @@ export default class IQttyTest extends Component {
   answerCorrect(answer) { 
     const sysAnswer = this.state.cases[this.state.currentCaseIdx].line3.result;
     const correct = (parseInt(answer,16) === parseInt(sysAnswer,16)); 
-    console.log(">>> System answer: " + sysAnswer + " Your answer: " + answer + " is " + correct );
+    //console.log(">>> System answer: " + sysAnswer + " Your answer: " + answer + " is " + correct );
     return correct;
   }
 
-  finishTest() {
+  finishTest(answers) {
 
     //NOTE: In order to store answers, a model extension will be required
     //Suggestion: store the testId as well
@@ -106,13 +106,16 @@ export default class IQttyTest extends Component {
       complexity: this.state.test.complexity,
       elapsedTime: (this.testTime/1000).toFixed(1),
       numberOfCases: this.state.test.cases.length,
-      score: this.currentScore
+      score: this.currentScore,
+      answers: answers,
+      testId: this.state.test._id
+  
     }
 
     //Send result to the DB
     axios.post("/api/results", testResult) 
       .then(fromServer => {  
-        console.log("Result stored. Response from server: " + fromServer.data);
+        //console.log("Result stored. Response from server: " + fromServer.data);
       })
       .catch(err => {
         console.log("ERROR while storing the test result: ", err);
@@ -130,7 +133,7 @@ export default class IQttyTest extends Component {
           })
         });
     else 
-      axios.get(`/api/tests/${this.props.testId}`)
+      axios.get(`/api/tests/id/${this.props.testId}`)
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
