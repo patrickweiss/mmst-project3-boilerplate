@@ -133,7 +133,7 @@ export default class IQttyTest extends Component {
           })
         });
     else 
-      axios.get(`/api/tests/id/${this.props.testId}`)
+      axios.get(`/api/tests/id/${this.props.match.params.testId}`)
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
@@ -142,7 +142,7 @@ export default class IQttyTest extends Component {
         });      
   }
 
-  render() {
+  render() {    
     if (this.state.endOfTest) {
       return (
         <div>

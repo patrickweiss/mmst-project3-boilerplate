@@ -99,7 +99,9 @@ app.use("/api/auth", authRoutes);
 
 
 // IQTTY routes middleware
-app.use('/api', require('./routes/iq_test-api'));
+app.use('/api/tests', require('./routes/iq_test-api'));
+
+
 //app.use('/api', require('./routes/iq_results-api'));
 const userResult = require("./routes/results");
 app.use("/api/results", userResult);
