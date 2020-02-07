@@ -2,16 +2,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../stylesheets/iq_resultlist.css';
-import IQttyTest from "./iq_test"
 import '../stylesheets/iq_resultlist.css'
-import TestReview from "./iq_test-review"
+/* import TestReview from "./iq_test-review" */
+import {Link} from "react-router-dom";
 
 class IqResultlist extends Component {
   
   state = {
     results: [],
-    resultToReview: null,
-    isTestAgainRequested: false        
+    /* resultToReview: null */            
     };      
          
     
@@ -28,35 +27,23 @@ class IqResultlist extends Component {
           });
   }
 
-testAgainHandler = (e) => {
-    this.setState ({
-        isTestAgainRequested: true        
-    })
-    console.log("I was clicked")
-    console.log(e.target.id)
-}
-
-reviewClickHandler =  e => {
+/* reviewClickHandler =  e => {
   const resultObj 
      = this.state.results.filter(r => {return (r._id === e.target.id)}
    )[0];
   this.setState({
    resultToReview: resultObj
  });
-}
+} */
 
   render() {
 
-    if (this.state.resultToReview) {
+    /* if (this.state.resultToReview) {
       return(
         <TestReview resultObj={this.state.resultToReview}/>
       );
-    }
+    } */
 
-    if (this.state.isTestAgainRequested){  
-      return <IQttyTest testId={"5e3abf53a48cd635d04e4f63"} />
-    }
- 
     const resultList = this.state.results.map(result => {
       let caseNumber = result.numberOfCases;
       let score = result.score;
@@ -71,10 +58,13 @@ reviewClickHandler =  e => {
           <div className="tdResultlist">{result.numberOfCases}</div>
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
-
-          <button className="trainingsPage-button" id= {result.testId} onClick={this.testAgainHandler}>Test Again</button>
           
-          <button className="trainingsPage-button" id={result._id} onClick={this.reviewClickHandler}>Review</button>
+          <Link to = {`/test/id/${result.testId}`}><button className="trainingsPage-button" id= {result.testId}>Test Again</button></Link>
+          
+          {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<  New */}
+          <Link to = {`/review/id/${result._id}`}><button className="trainingsPage-button" id= {result._id}>Review</button></Link>
+
+          {/* <button className="trainingsPage-button" id={result._id} onClick={this.reviewClickHandler}>Review</button> */}
         </div>
       )
 

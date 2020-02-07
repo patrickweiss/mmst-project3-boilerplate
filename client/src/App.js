@@ -15,6 +15,7 @@ import IqTraining from "./components/iq_Training";
 import IqResultlist from "./components/iq_Resultlist";
 import Iqresult from "./components/iq_result";
 /* import IqAdmin from "./components/iq_admin.js/index.js.js"; */
+import TestReview from "./components/iq_test-review"
 
 export default class App extends React.Component {
   state = {
@@ -70,6 +71,15 @@ export default class App extends React.Component {
         <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route exact path="/test/new" render={this.testRoute} />
+
+          <Route exact path="/test/id/:testId" render= {
+            props => <IQttyTest {...props} />
+          } />
+
+          <Route exact path="/review/id/:resultId" render= {
+            props => <TestReview {...props} />
+          } />
+
           <Route exact path="/" component={IqStartpage} />
           <Route
             exact

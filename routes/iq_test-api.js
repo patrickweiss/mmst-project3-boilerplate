@@ -8,7 +8,7 @@ const Result = require("../models/results");
 
 
 // Get a random test with its cases
-router.get("/tests/random", (req, res, next) => {
+router.get("/random", (req, res, next) => {
 
   Test.find()
     .then (tests => {
@@ -28,7 +28,7 @@ router.get("/tests/random", (req, res, next) => {
 });
 
 // Get a specific test with its cases
-router.get("/tests/id/:testId", (req, res, next) => {
+router.get("/id/:testId", (req, res, next) => {
 
     Test.findById(req.params.testId)
     .then (tests => {
@@ -44,20 +44,6 @@ router.get("/tests/id/:testId", (req, res, next) => {
     .catch(err => {
       res.json(err);  
     })  
-});
-
-// Store a test result
-router.post("/results", (req, res, next) => {
-  const testResult = req.body;
-  //testResult.userName = req.session.user.userName;
-  //console.log ("#### Result to be stored: " + JSON.stringify(testResult));
-  testResult.testId = mongoose.Types.ObjectId(testResult.testId);
-  //console.log ("#### Result with ObjectID: " + JSON.stringify(testResult));
-  Result.create(testResult)
-  .then()
-  .catch((err) => {
-    console.log(err)
-  })
 });
 
 
