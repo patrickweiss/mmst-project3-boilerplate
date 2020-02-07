@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../stylesheets/iq_resultlist.css';
 import { Link } from "react-router-dom";
+import IQttyTest from "./iq_test"
 
 class IqResultlist extends Component {
   state = {
-    results: []        
+    results: [],
+    isTestAgainRequested: false        
     };       
     
   componentDidMount() {
@@ -22,7 +24,15 @@ class IqResultlist extends Component {
           });
   }
 
-  render() {
+  testAgainHandler = (e) => {
+    this.setState ({
+        isTestAgainRequested: true        
+    })
+    console.log("I was clicked")
+    console.log(e.target.id)
+}
+
+    render() {
        
     const resultList = this.state.results.map((result) => {
       let caseNumber = result.numberOfCases;
@@ -38,10 +48,9 @@ class IqResultlist extends Component {
           <div className="tdResultlist">{result.numberOfCases}</div>
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
-          <button className="trainingsPage-button">          
-            {/* <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/5e3abf53a48cd635d04e4f63">Start Again</Link> */}
-            
-          </button>
+          <button className="trainingsPage-button" id= {result.testId} onClick={this.testAgainHandler}>Test Again</button>
+          
+          
           <button className="trainingsPage-button">
             <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/new">Review</Link>            
           </button>
@@ -50,8 +59,11 @@ class IqResultlist extends Component {
 
     })
 
-    return (
-      <div>      
+    if (this.state.isTestAgainRequested){      
+      return <IQttyTest testId={"5e3abf53a48cd635d04e4f63"} />
+    }else{
+      return(
+        <div>      
         <div className = "resultlistPage">
           <section className= "table-resultlist">
             <h1 className="header">Your Test Results</h1>
@@ -66,16 +78,17 @@ class IqResultlist extends Component {
                   <div className="thResultlist">Score</div>
                   <div className="thResultlist">Result</div>
                   <div className="thResultlist"></div>
-                </div>
-                  
-                {resultList}            
-                
+                </div>                  
+               {resultList}      
               </div>
             </div>
           </section>
         </div>
       </div>
-    )
+
+      )
+    }
+    
   }
 }
 
