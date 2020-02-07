@@ -2,11 +2,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../stylesheets/iq_resultlist.css'
+import TestReview from "./iq_test-review"
 
 class IqResultlist extends Component {
   state = {
-    results: []        
-    };       
+    results: [],
+    resultToReview: null
+
+  };       
     
   componentDidMount() {
       console.log("AllResults --> componentDidMount()")
@@ -21,9 +24,24 @@ class IqResultlist extends Component {
           });
   }
 
+  reviewClickHandler =  e => {
+     const resultObj 
+        = this.state.results.filter(r => {return (r._id === e.target.id)}
+      )[0];
+     this.setState({
+      resultToReview: resultObj
+    });
+  }
+
   render() {
+
+    if (this.state.resultToReview) {
+      return(
+        <TestReview resultObj={this.state.resultToReview}/>
+      );
+    }
        
-    const resultList = this.state.results.map((result) => {
+    const resultList = this.state.results.map(result => {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
@@ -37,6 +55,11 @@ class IqResultlist extends Component {
           <div className="tdResultlist">{result.numberOfCases}</div>
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
+          <div>
+            <button id={result._id} onClick={this.reviewClickHandler} >
+               Review 
+            </button>
+          </div>
         </div>
       )
 
