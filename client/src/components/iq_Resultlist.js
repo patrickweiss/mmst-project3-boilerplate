@@ -5,7 +5,7 @@ import '../stylesheets/iq_resultlist.css'
 
 class IqResultlist extends Component {
   state = {
-    results: []        
+    results: []
     };       
     
   componentDidMount() {
@@ -22,12 +22,11 @@ class IqResultlist extends Component {
   }
 
   render() {
-       
+  
     const resultList = this.state.results.map((result) => {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
-
       return (
         <div className="trResultlist" key={result._id}>
           <div className="tdResultlist">{result.userName}</div>
