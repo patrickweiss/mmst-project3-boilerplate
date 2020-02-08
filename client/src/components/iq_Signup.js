@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { signup } from "../services/auth";
 import { Alert, Form, Button } from "react-bootstrap";
 
-class Signup extends Component {
+class IqSignup extends Component {
   state = {
     username: "",
     password: "",
@@ -28,7 +28,7 @@ class Signup extends Component {
         // lift the data up to the App state
         this.props.setUser(data);
         // redirect to "/projects"
-        this.props.history.push("/projects");
+        this.props.history.push("/training");
       }
     });
   };
@@ -69,4 +69,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default IqSignup;

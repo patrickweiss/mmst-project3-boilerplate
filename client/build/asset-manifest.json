@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.47b2d147.chunk.css",
+    "main.js": "/static/js/main.86d49bc2.chunk.js",
+    "main.js.map": "/static/js/main.86d49bc2.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8095ec4f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8095ec4f.js.map",
+    "static/css/2.64a99b10.chunk.css": "/static/css/2.64a99b10.chunk.css",
+    "static/js/2.0a4dc863.chunk.js": "/static/js/2.0a4dc863.chunk.js",
+    "static/js/2.0a4dc863.chunk.js.map": "/static/js/2.0a4dc863.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e949d1e28fc38b4bb7fc4b3a2e175e6d.js": "/precache-manifest.e949d1e28fc38b4bb7fc4b3a2e175e6d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.64a99b10.chunk.css.map": "/static/css/2.64a99b10.chunk.css.map",
+    "static/css/main.47b2d147.chunk.css.map": "/static/css/main.47b2d147.chunk.css.map",
+    "static/media/iq_startpage.css": "/static/media/iq_grid.1284d2f2.jpg",
+    "static/media/iq_training.css": "/static/media/iq_grid2.02e09c48.jpg",
+    "static/media/iq_resultlist.css": "/static/media/iq_resultlist.eb9465db.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8095ec4f.js",
+    "static/css/2.64a99b10.chunk.css",
+    "static/js/2.0a4dc863.chunk.js",
+    "static/css/main.47b2d147.chunk.css",
+    "static/js/main.86d49bc2.chunk.js"
+  ]
+}
