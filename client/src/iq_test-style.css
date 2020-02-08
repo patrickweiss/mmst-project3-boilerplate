@@ -98,7 +98,6 @@
   width : 200px;
   display:flex;
   justify-content: space-between;
-
 }
 
 .board-row {
@@ -118,3 +117,70 @@
   margin: 0;
 }
 
+.answer-row {
+  width : 180px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.test-rev-row {
+  width : 300px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.case-rev {
+  /*width : 600px; */
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.case-comp-list {
+  width: 500px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.case-comp {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.op-desc {
+
+}
+
+.formula-row {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.formula-cell {
+  border: none;
+  margin: 2px;
+  width:56px;
+  height:56px;
+}
+
+.answer-cell-ok {
+  border: solid green;
+  margin: 2px;
+  width:56px;
+  height:56px;
+}
+
+.answer-cell-err {
+  border: solid red;
+  margin: 2px;
+  width:56px;
+  height:56px;
+}

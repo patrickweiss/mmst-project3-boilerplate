@@ -8,7 +8,6 @@ class IqResultlist extends Component {
   state = {
     results: [],
     resultToReview: null
-
   };       
     
   componentDidMount() {

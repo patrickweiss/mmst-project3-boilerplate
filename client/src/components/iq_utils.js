@@ -8,7 +8,7 @@ export default class Diagram {
       this.ctx.fillRect(0,0,size,size);
       this.ctx.fillStyle = this.color;
       this.ctx.strokeStyle = this.color;
-      this.ctx.lineWidth = 1;
+      this.ctx.lineWidth = 1.5;
       this.symbols = shapes; 
    }
    
@@ -68,6 +68,12 @@ export default class Diagram {
         case "F2": this._drawF2(); break;
         case "F3": this._drawF3(); break;
         case "F4": this._drawF4(); break;
+        case "Left": this._drawLeft(); break;
+        case "Right": this._drawRight(); break;
+        case "RightCompl": this._drawRightCompl(); break;
+        case "AND": this._drawAND(); break;
+        case "OR": this._drawOR(); break;
+        case "XOR": this._drawXOR(); break;
         default:
      }         
    }
@@ -302,6 +308,70 @@ export default class Diagram {
     ctx.closePath();
     ctx.fill();
     ctx.restore();
+    }
+
+    _drawLeft() {
+      //Left paranthesis
+      const r = 0.8*this.size;
+      this.ctx.beginPath();
+      this.ctx.arc(1.5*this.size, this.size/2, r, 0.5*Math.PI, 1.5*Math.PI);
+      this.ctx.stroke();
+    }
+
+    _drawRight() {
+      //Right paranthesis and equality sign
+      const r = 0.8*this.size;
+      this.ctx.beginPath();
+      this.ctx.arc(-0.5*this.size, this.size/2, r, 1.5*Math.PI, 0.5*Math.PI);
+      this.ctx.moveTo(0.6*this.size, 0.45*this.size);
+      this.ctx.lineTo(0.9*this.size, 0.45*this.size);
+      this.ctx.moveTo(0.6*this.size, 0.55*this.size);
+      this.ctx.lineTo(0.9*this.size, 0.55*this.size);
+      this.ctx.stroke();
+    }
+
+    _drawRightCompl() {
+      //Right paranthesis, complement symbol and equality sign
+      this._drawRight();
+      const r = 0.12*this.size;
+      this.ctx.beginPath();
+      this.ctx.arc(0.5*this.size, 0.14*this.size, r, 0.4*Math.PI, 1.6*Math.PI);
+      this.ctx.stroke();            
+    }
+
+    _drawAND() {
+      //Union operator
+      const r = 0.25*this.size;
+      this.ctx.beginPath();
+      this.ctx.arc(0.6*this.size, 0.6*this.size, r, Math.PI, 2*Math.PI);
+      this.ctx.moveTo(0.6*this.size+r, 0.6*this.size);
+      this.ctx.lineTo(0.6*this.size+r, 0.75*this.size);
+      this.ctx.moveTo(0.6*this.size-r, 0.6*this.size);
+      this.ctx.lineTo(0.6*this.size-r, 0.75*this.size);
+      this.ctx.stroke();       
+    }
+
+    _drawOR() {
+      //Intersection operator
+      const r = 0.25*this.size;
+      this.ctx.beginPath();
+      this.ctx.arc(0.6*this.size, 0.6*this.size, r, 0, Math.PI);
+      this.ctx.moveTo(0.6*this.size+r, 0.6*this.size);
+      this.ctx.lineTo(0.6*this.size+r, 0.45*this.size);
+      this.ctx.moveTo(0.6*this.size-r, 0.6*this.size);
+      this.ctx.lineTo(0.6*this.size-r, 0.45*this.size);
+      this.ctx.stroke();   
+
+    }
+
+    _drawXOR() {
+      //Symmetric difference operator
+      this.ctx.beginPath();
+      this.ctx.moveTo(0.5*this.size, 0.25*this.size);
+      this.ctx.lineTo(0.8*this.size, 0.75*this.size);
+      this.ctx.lineTo(0.2*this.size, 0.75*this.size);
+      this.ctx.closePath();
+      this.ctx.stroke();
     }
   
   }  //end of Diagram class
