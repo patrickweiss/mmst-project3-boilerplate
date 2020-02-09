@@ -1,5 +1,6 @@
 //INPUTS
-const numOfComponents = 2;   //number of test components per case
+const numOfComponents = 5;   //number of test components per case 
+                             //(max 5, because categories D and E are mutually exclusive)
 
 const mongoose = require('mongoose');
 const TestCase = require('../models/testCases');
@@ -40,11 +41,11 @@ const categories = [
 ];
       
 const operations = [
-  {name: "AND",  desc: "Intersect of"},
-  {name: "NAND", desc: "Negative intersect of"},
-  {name: "OR",   desc: "Union of"},
-  {name: "NOR",  desc: "Negative union of"},
-  {name: "XOR",  desc: "Exclusive union of"},
+  {name: "AND",  desc: "Intersection"},
+  {name: "NAND", desc: "Complement of intersection"},
+  {name: "OR",   desc: "Union"},
+  {name: "NOR",  desc: "Complement of union"},
+  {name: "XOR",  desc: "Symmetric difference"}
   //{name: "CW",   desc: "Clockwise rotation of"},
   //{name: "CCW",  desc: "Counter-clockwise rotation of"}
 ]; 
@@ -56,7 +57,7 @@ let selectedCats = [];
 while (selectedCats.length < numOfComponents) {
   n = Math.floor(Math.random() * categories.length);
   cat = categories[n].name;
-  //validation
+  //validation - categories D,E are mutually exclusive 
   if (selectedCats.includes(cat) 
       || (cat === "D" && selectedCats.includes("E")) 
       || (cat === "E" && selectedCats.includes("D")) ) continue;
@@ -91,8 +92,8 @@ function createTestCases(comps) {
         
   }
 
-  console.log("Selected Components: ")
-  for (c of selectedComps) console.log ("Category: " + c.catName + " ID: " + c._id );
+  //console.log("Selected Components: ")
+  //for (c of selectedComps) console.log ("Category: " + c.catName + " ID: " + c._id );
 
   //combine cases in one numericTestCase object
 
@@ -130,8 +131,9 @@ function createTestCases(comps) {
   testCase.line3.arg2 = numericTestCase.line3.arg2.toString(16);
   testCase.line3.result = numericTestCase.line3.result.toString(16);
 
-  console.log("For the database: ");
-  console.log(JSON.stringify(testCase));
+  console.log("Case result: " + testCase.line3.result);
+  for (c of testCase.catOps) 
+    console.log ("Category: " + c.catName + " Operation: " + c.opName);
 
   //Write to the DB
 
@@ -165,30 +167,10 @@ function addComponentToCase(tcomp, tcase) {
   tcase.line3.arg2 = tcase.line3.arg2 + tcomp.line3.arg2 * weight;
   tcase.line3.result = tcase.line3.result + tcomp.line3.result * weight;
 
-
 }
 
 
 
 
-/*
-for (cat of selectedCats) {
-  console.log("category: " + cat);
-  TestComponent.countDocuments({catName:cat})
-  .then(docCount => {
-    //console.log("Number of components for cat: " + cat + " is " + docCount);
 
-      TestComponent.find({catName:cat}).limit(1).skip(Math.floor(Math.random() * docCount))
-      .then(doc => {
-        console.log("component: " + doc[0]._id + " catName: " + doc[0].catName);
-      
-      mongoose.connection.close();
-    });   
-  })
-}
-
-
-        
-
-*/
 

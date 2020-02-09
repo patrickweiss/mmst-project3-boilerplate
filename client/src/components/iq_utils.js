@@ -8,7 +8,7 @@ export default class Diagram {
       this.ctx.fillRect(0,0,size,size);
       this.ctx.fillStyle = this.color;
       this.ctx.strokeStyle = this.color;
-      this.ctx.lineWidth = 1.5;
+      this.ctx.lineWidth = 1.2;
       this.symbols = shapes; 
    }
    

@@ -14,10 +14,6 @@ mongoose.connect(`mongodb://localhost/${dbName}`, {
 }); */
 
 
-//let selectedCats = [];
-//let numOfComponents;
-
-
 
 function createTestCases(comps, selectedCats, numOfComponents) {
 
@@ -140,7 +136,7 @@ function caseGenerator(numOfComponents) {
 }
 
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 router.get('/xadmin', (req, res) => {
   console.log("Page requestet")
@@ -295,27 +291,10 @@ function genArgsRestricted() {
 }
 
 
-/*
-//remove
-function convertToHex(comp) {
-  comp.line1.arg1 = comp.line1.arg1.toString(16);
-  comp.line1.arg2 = comp.line1.arg2.toString(16);
-  comp.line1.result = comp.line1.result.toString(16);
-  comp.line2.arg1 = comp.line2.arg1.toString(16);
-  comp.line2.arg2 = comp.line2.arg2.toString(16);
-  comp.line2.result = comp.line2.result.toString(16);
-  comp.line3.arg1 = comp.line3.arg1.toString(16);
-  comp.line3.arg2 = comp.line3.arg2.toString(16);
-  comp.line3.result = comp.line3.result.toString(16);
 
-}
-*/
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CaseGenerator >>>>>>>>>>>>>>>>>>>>>>>>>>>>><
+//<<<<<<<<<<<<<<<<<< CaseGenerator >>>>>>>>>>>>>>>>>>>>>>>>>>>>><
 
 
-
-
-// end of the CaseGenerator function
 
 
 function addComponentToCase(tcomp, tcase) {
@@ -325,7 +304,7 @@ function addComponentToCase(tcomp, tcase) {
   const idx = catNames.indexOf(tcomp.catName);
   let weight = catWeights[idx];
 
-  console.log("Category: " + tcomp.catName + " WEIGHT: " + weight);
+  //console.log("Category: " + tcomp.catName + " WEIGHT: " + weight);
 
   //operations on numbers
   tcase.line1.arg1 = tcase.line1.arg1 + tcomp.line1.arg1 * weight;
@@ -368,7 +347,7 @@ function testGenerator (numOfCases, maxCaseComplexity) {
 
 function createTest(cases, numOfCases, maxCaseComplexity, maxTestName) {
 
-  console.log(">>>>>>>>>>>>>Number of cases in DB: " + cases.length);  
+  console.log(">>>>>>>Number of cases in DB: " + cases.length);  
 
   let test = {   
     testName: maxTestName + 1,    

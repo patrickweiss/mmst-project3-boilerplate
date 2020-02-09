@@ -1,4 +1,4 @@
-const numOfCases = 2;          //number of cases in the test
+const numOfCases = 10;          //number of cases in the test
 const maxCaseComplexity = 3;    //max case complexity 1-Low, 2-Medium, 3-High
 
 const mongoose = require('mongoose');
@@ -32,7 +32,7 @@ Test
 .sort('-testName')   //getting max
 .exec(function (err, testMax) {
   maxTestName = (testMax === null) ? 0 : testMax.testName;
-  console.log("Max testName is: " + maxTestName);
+  //console.log("TestName: " + maxTestName+1);
 
   //Get all test cases from DB
   TestCase.find()
@@ -69,9 +69,7 @@ function createTest(cases) {
  
   test.complexity = (maxCaseComplexity === 1) ? "Low" : (maxCaseComplexity === 2) ? "Medium" : "High"; 
   test.testName = maxTestName + 1;
-  console.log("Test created: " + JSON.stringify(test));
-
-
+  console.log("Test " + test.testName + " created with " + test.cases.length + " cases");
 
 }
 
