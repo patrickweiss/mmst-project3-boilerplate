@@ -165,7 +165,7 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
             </div>
             <div>
-              <img src="../loader.gif" alt="" width="300"/>
+              <img src="/loader.gif" alt="" width="300"/>
             </div>            
         </div>
       );
