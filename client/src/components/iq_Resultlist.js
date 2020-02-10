@@ -1,14 +1,18 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../stylesheets/iq_resultlist.css';
 import '../stylesheets/iq_resultlist.css'
-import TestReview from "./iq_test-review"
+/* import TestReview from "./iq_test-review" */
+import {Link} from "react-router-dom";
 
 class IqResultlist extends Component {
+  
   state = {
     results: [],
-    resultToReview: null
-  };       
+    /* resultToReview: null */            
+    };      
+         
     
   componentDidMount() {
       console.log("AllResults --> componentDidMount()")
@@ -23,28 +27,27 @@ class IqResultlist extends Component {
           });
   }
 
-  reviewClickHandler =  e => {
-     const resultObj 
-        = this.state.results.filter(r => {return (r._id === e.target.id)}
-      )[0];
-     this.setState({
-      resultToReview: resultObj
-    });
-  }
+/* reviewClickHandler =  e => {
+  const resultObj 
+     = this.state.results.filter(r => {return (r._id === e.target.id)}
+   )[0];
+  this.setState({
+   resultToReview: resultObj
+ });
+} */
 
   render() {
 
-    if (this.state.resultToReview) {
+    /* if (this.state.resultToReview) {
       return(
         <TestReview resultObj={this.state.resultToReview}/>
       );
-    }
-       
+    } */
+
     const resultList = this.state.results.map(result => {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
-
       return (
         <div className="trResultlist" key={result._id}>
           <div className="tdResultlist">{result.userName}</div>
@@ -54,18 +57,19 @@ class IqResultlist extends Component {
           <div className="tdResultlist">{result.numberOfCases}</div>
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
-          <div>
-            <button id={result._id} onClick={this.reviewClickHandler} >
-               Review 
-            </button>
-          </div>
+          
+          <Link to = {`/test/id/${result.testId}`}><button className="trainingsPage-button" id= {result.testId}>Test Again</button></Link>
+          
+          {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<  New */}
+          <Link to = {`/review/id/${result._id}`}><button className="trainingsPage-button" id= {result._id}>Review</button></Link>
+
+          {/* <button className="trainingsPage-button" id={result._id} onClick={this.reviewClickHandler}>Review</button> */}
         </div>
       )
 
     })
-
-    return (
-      <div>      
+      return(
+        <div>      
         <div className = "resultlistPage">
           <section className= "table-resultlist">
             <h1 className="header">Your Test Results</h1>
@@ -79,17 +83,19 @@ class IqResultlist extends Component {
                   <div className="thResultlist">Number of Test Cases</div>
                   <div className="thResultlist">Score</div>
                   <div className="thResultlist">Result</div>
-                </div>
-                  
-                {resultList}            
-                
+                  <div className="thResultlist"></div>
+                </div>                  
+               {resultList}      
               </div>
             </div>
           </section>
         </div>
       </div>
-    )
+
+      )
+    }
   }
-}
+  
+
 
 export default IqResultlist;

@@ -5,11 +5,9 @@ import axios from "axios";
 
 export class Iqresult extends Component {
     state = {
-      result: []
+      result: [],
     };
-
-    handle
-
+  
     componentDidMount() {
       console.log("App --> componentDidMount()")
       axios.get("/api/results")
@@ -20,17 +18,22 @@ export class Iqresult extends Component {
       .catch(err=>{
         console.log("Fehler bei iq_result Component Did mount", err);
       })
-     
   }
+
+
  
   render() {
-   /*  console.log(this.state.result);
+    
+   /* console.log(this.state.result);
     console.log(this.state.result.userName); */
     let scores = this.state.result.score;
     let questions = this.state.result.numberOfCases;
-    let ergebnis = (Math.round((scores / questions) * 100)).toString();
-    console.log(typeof(ergebnis))
+    let ergebnis = (Math.round((scores / questions) * 100)).toString()
+
+
+
     return (
+     
       <div className="resultPage">
         <div className="resultHeader">
           <h1>
@@ -74,20 +77,14 @@ export class Iqresult extends Component {
 
         <div className="buttonbox">
           
-          <button className="rbutton"> 
-          <Link to="/training" style={{color:'white', textDecoration:'none'}}>
-          Training
-          </Link>
-          </button>
-
-         <button className="rbutton"> 
-          <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
-          Resultlist
-          </Link>
-          </button>
-
+        <Link to="/training" style={{color:'white', textDecoration:'none'}}>
+            <button className="rbutton">Training</button>
+        </Link>
+        <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
+            <button className="rbutton">Resultlist</button>
+        </Link>
         </div>
-      </div>
+        </div>
     );
   }
 }

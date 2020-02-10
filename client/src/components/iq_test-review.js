@@ -24,6 +24,27 @@ export default class TestReview extends Component {
 
   componentDidMount() {
 
+    const resultId = this.props.match.params.resultId;
+    
+    console.log(">>>>>>> Result ID from Karin: ", resultId);
+
+    axios.get(`/api/results/id/${resultId}`)
+      .then(resultData => {
+        const testId = resultData.data.testId;
+        axios.get(`/api/tests/id/${testId}`)
+        .then(testDataFromApi => {
+          this.setState({
+            result: resultData.data,
+            test: testDataFromApi.data.testData,
+            cases: testDataFromApi.data.arrayOfCases  
+          })
+        })
+      })
+  }
+
+
+/*
+
     const testId = this.props.resultObj.testId;
     axios.get(`/api/tests/id/${testId}`)
       .then(resFromApi => {
@@ -34,6 +55,7 @@ export default class TestReview extends Component {
         })
       });      
   }
+  */
 
   lessBtnHandler =  e => {
     console.log("LESS button clicked for case ", e.target.id);
@@ -56,9 +78,15 @@ export default class TestReview extends Component {
 
   render() {
     const test = this.state.test;
-    const result = this.props.resultObj;
+    const result = this.state.result;
+
+    
 
     if (!test) return (null);  //render nothing if there is no test data
+
+
+    console.log(">>>>>>RESULT OBJECT", result);
+    console.log(">>>>>>TEST OBJECT", test);
 
     const listOfCasesJSX = this.state.cases.map((c,i) => 
            <li key = {c._id} > 
