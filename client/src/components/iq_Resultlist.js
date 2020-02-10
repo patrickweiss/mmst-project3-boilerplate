@@ -48,7 +48,6 @@ class IqResultlist extends Component {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
-
       return (
         <div className="trResultlist" key={result._id}>
           <div className="tdResultlist">{result.userName}</div>
