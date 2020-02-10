@@ -12,7 +12,7 @@ const IqNavbar = props => {
   };
 
   return (
-    <Nav className="nav justify-content-end" bg="primary">
+    <Nav className="nav justify-content-end" bg="primary" fixed="top">
       {props.user ? (
         <div>
           <Link to="/">Welcome {props.user.username}</Link>
