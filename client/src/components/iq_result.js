@@ -33,6 +33,7 @@ export class Iqresult extends Component {
 
 
     return (
+     
       <div className="resultPage">
         <div className="resultHeader">
           <h1>
@@ -76,20 +77,14 @@ export class Iqresult extends Component {
 
         <div className="buttonbox">
           
-          <button className="rbutton"> 
-          <Link to="/training" style={{color:'white', textDecoration:'none'}}>
-          Training
-          </Link>
-          </button>
-
-         <button className="rbutton"> 
-          <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
-          Resultlist
-          </Link>
-          </button>
-         
+        <Link to="/training" style={{color:'white', textDecoration:'none'}}>
+            <button className="rbutton">Training</button>
+        </Link>
+        <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
+            <button className="rbutton">Resultlist</button>
+        </Link>
         </div>
-      </div>
+        </div>
     );
   }
 }

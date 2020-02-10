@@ -1,25 +1,40 @@
 /* <<<<<<<<<<<<<<< result.js >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
 /* Seite */
+
+
+
 .resultPage {
   display:flex;
+  padding-top: 30px;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  background:url(../iq_resultlist.jpg);  
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-x: 100%;
+  background-position-y: 100%;
+  height: 44.5vw;    
+  
 }
+
+
 
 /* Header */
 .resultHeader {
   margin-top: 50px;
+  margin-left: 50px;
 }
 
 /* Tabelle für iq_result */
 .tableresult { 
       display: table;
-      margin-top: 100px;
+      margin-top: 50px;
       display: table; 
       border-collapse:collapse; 
       font-size: xx-large;
       width: 800px;
+      margin-left: 50px;
     }
 .resulttr { 
       display:table-row;
@@ -48,6 +63,7 @@
 /* result footer*/
 .resultfooter {
   margin-top: 35px;
+  margin-left: 50px;;
 }
 
 /* Buttonbox uand button */
@@ -79,6 +95,7 @@
   justify-content: space-around;
   padding: 25px;
   width: 600px;
+  margin-left: 50px;
 }
 
 /* <<<<<<<<<<< ENDE Tabelle iq_result >>>>>>>>>> */
