@@ -24,20 +24,40 @@
   color: darkslategrey;  
 }
 
+.buttonFlex{
+  display: flex;
+  width: 50rem;
+  height: 180px;
+  margin-bottom: 2rem; 
+  margin-top: 2rem;
+  border: red solid 1px;
+  justify-content: flex-end;
+}
+
 .trainingsPage-button {
+  
   height: 40px;
   width: 160px;
   background-color: #2081c3;
   color: white;
   border-radius: 4px;  
   font-size: 15px;
-  margin-bottom: 2rem; 
+  
 }
 
 .trainingsPage-button:hover {
   background-color: green;
   color: white;
 }
-/* .trainingsPage-button-box {    
-  margin-bottom: 2rem;
-} */
+
+section h3{
+  font-style: oblique;
+  color: #2081c3
+}
+
+#selection{
+display: flex;
+justify-content: space-between;
+width: 50vw;
+list-style-type: none;
+}

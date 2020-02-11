@@ -146,7 +146,7 @@ export default class IQttyTest extends Component {
   render() {    
     if (!this.state.test) 
       return (
-        <div>
+        <div className='error-msg'>
           <h3>Sorry! No test available</h3>
         </div>
       );  
