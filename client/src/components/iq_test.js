@@ -11,7 +11,7 @@ export default class IQttyTest extends Component {
 
     this.caseStartTimestamp = 0;
     this.testTime = 0;            //sum of case times 
-    this.caseLimit = (this.props.timeout === "yes") ? 90*1000 : 60*60*1000;  //time limit per case
+    this.caseLimit = (this.props.match.params.timeout === "yes") ? 90*1000 : 60*60*1000;  //time limit per case
     this.animLimit = 2 * 1000;    //time between cases
     this.caseTimer = 0;
     this.loadTimer = 0;
@@ -124,9 +124,8 @@ export default class IQttyTest extends Component {
 
   componentDidMount() {
 
-    //if (this.props.testId === "random")
-    if (this.props.complexity)
-      axios.get(`/api/tests?complexity=${this.props.complexity}`)  
+    if (this.props.match.params.complexity)
+      axios.get(`/api/tests?complexity=${this.props.match.params.complexity}`)  
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
@@ -144,12 +143,12 @@ export default class IQttyTest extends Component {
   }
 
   render() {    
-    if (!this.state.test) 
+    /*if (!this.state.test) 
       return (
         <div className='error-msg'>
           <h3>Sorry! No test available</h3>
         </div>
-      );  
+      );*/  
 
     if (this.state.endOfTest)
       return (
