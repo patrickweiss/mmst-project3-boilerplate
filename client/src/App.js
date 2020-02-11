@@ -52,7 +52,7 @@ export default class App extends React.Component {
     }
   };
 
-  testRoute = props => {
+  /* testRoute = props => {
     if (this.state.user) {
       console.log(
       );
@@ -62,7 +62,7 @@ export default class App extends React.Component {
     } else {
       return <Redirect to="/" />;
     }
-  };
+  }; */
 
   render() {
 
