@@ -24,15 +24,6 @@
   color: darkslategrey;  
 }
 
-.buttonFlex{
-  display: flex;
-  width: 50rem;
-  height: 180px;
-  margin-bottom: 2rem; 
-  margin-top: 2rem;
-  border: red solid 1px;
-  justify-content: flex-end;
-}
 
 .trainingsPage-button {
   
@@ -42,7 +33,7 @@
   color: white;
   border-radius: 4px;  
   font-size: 15px;
-  margin-left: 5rem;
+  margin-left: 35rem;
   
 }
 
