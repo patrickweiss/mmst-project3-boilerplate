@@ -157,7 +157,7 @@ class IqTraining extends Component {
               </article>
             </section>
            
-            <div className='buttonFlex'>
+            
             <button
               className="trainingsPage-button"
               onClick={this.startTestHandler}
@@ -165,7 +165,7 @@ class IqTraining extends Component {
               Start Test
              
             </button>
-            </div>
+         
           </div>
         </section>
       );

@@ -24,8 +24,8 @@ export class Iqresult extends Component {
  
   render() {
     
-   /* console.log(this.state.result);
-    console.log(this.state.result.userName); */
+    console.log(this.state.result);
+    console.log(this.state.result.userName); 
     let scores = this.state.result.score;
     let questions = this.state.result.numberOfCases;
     let ergebnis = (Math.round((scores / questions) * 100)).toString()
