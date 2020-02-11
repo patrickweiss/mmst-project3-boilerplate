@@ -52,17 +52,15 @@ export default class App extends React.Component {
     }
   };
 
-  /* testRoute = props => {
+  testNewRoute = props => {
     if (this.state.user) {
-      console.log(
-      );
       return (
-        <IQttyTest userName={this.state.user.username} timeout="yes" complexity="Low" />
+        <IQttyTest {...props} userName={this.state.user.username}/>
       );
     } else {
       return <Redirect to="/" />;
     }
-  }; */
+  };
 
   render() {
 
@@ -80,7 +78,7 @@ export default class App extends React.Component {
           <Route 
             exact 
             path="/test/new/:complexity/:timeout" 
-            render= {props => <IQttyTest {...props} />}
+            render= {this.testNewRoute}
           />          
           <Route exact path="/review/id/:resultId" render= {
             props => <TestReview {...props} /> } 
