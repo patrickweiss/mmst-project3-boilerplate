@@ -15,7 +15,7 @@ mongoose.connect(`mongodb://localhost/${dbName}`, {
 
 //>>>>>>>>>>>>>>>>>>>> Test Generator >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-function testGenerator (numOfCases, maxCaseComplexity) {
+function testGenerator (numOfCases, caseComplexity) {
 
   let maxTestName = 0;
 
@@ -25,25 +25,25 @@ function testGenerator (numOfCases, maxCaseComplexity) {
   .exec(function (err, testMax) {
     maxTestName = (testMax === null) ? 0 : testMax.testName;
     
-    //Get all test cases from DB
-    TestCase.find()
+    //Get all test cases from DB with the given complexity
+    TestCase.find({complexity: caseComplexity})
     .then (docs => {
 
       //Generate one test 
-      createTest(docs, numOfCases, maxCaseComplexity, maxTestName); //Promise inside!
+      createTest(docs, numOfCases, caseComplexity, maxTestName); //Promise inside!
 
     });
   });   
 }
 
-function createTest(cases, numOfCases, maxCaseComplexity, maxTestName) {
+function createTest(cases, numOfCases, caseComplexity, maxTestName) {
 
   console.log(">>>>>>>Number of cases in DB: " + cases.length);  
 
   let test = {   
     testName: maxTestName + 1,    
-    complexity: (parseInt(maxCaseComplexity) === 1) ? "Low" :((parseInt(maxCaseComplexity) === 2)
-           ? "Medium" : "High"),
+    complexity: caseComplexity, // (parseInt(caseComplexity) === 1) ? "Low" :((parseInt(caseComplexity) === 2)
+                                //? "Medium" : "High"),
     cases: []
   };
 
@@ -52,9 +52,9 @@ function createTest(cases, numOfCases, maxCaseComplexity, maxTestName) {
     let caseId = cases[n]._id;
     let cx = cases[n].complexity;
     //validation
-    if (test.cases.includes(caseId) 
-        || (maxCaseComplexity === 1 && cx !== "Low")
-        || (maxCaseComplexity === 2 && cx === "High")) 
+    if (test.cases.includes(caseId)) 
+        //|| (caseComplexity === 1 && cx !== "Low")
+        //|| (caseComplexity === 2 && cx === "High")) 
         continue;
     test.cases.push(caseId);
   }
@@ -62,7 +62,7 @@ function createTest(cases, numOfCases, maxCaseComplexity, maxTestName) {
     //Write it to the DB
     Test.create(test)     //Promise inside!
     .then(() => {
-      console.log(">>>>>>>>>>>> Test created: " + JSON.stringify(test));
+      console.log("Test " + test.testName + " created with " + test.cases.length + " cases");
       //mongoose.connection.close();
     });  
 }

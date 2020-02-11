@@ -57,7 +57,7 @@ export default class App extends React.Component {
       console.log(
       );
       return (
-        <IQttyTest testId={"random"} userName={this.state.user.username} />        
+        <IQttyTest userName={this.state.user.username} timeout="yes" complexity="Low" />
       );
     } else {
       return <Redirect to="/" />;
