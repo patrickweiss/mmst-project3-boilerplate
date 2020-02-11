@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import "../stylesheets/iq_training.css";
-/* import { Link } from "react-router-dom";*/
-import IQttyTest from "./iq_test";
-import { Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+//import IQttyTest from "./iq_test";
+//import { Tooltip } from "react-bootstrap";
 class IqTraining extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      complexity: "",
-      timeout: "",
-      runTest: false
+      complexity: "Low",
+      timeout: "no",
+      //runTest: false
     };
 
     this.handleComplexity = this.handleComplexity.bind(this);
     this.handleTimeout = this.handleTimeout.bind(this);
-    /*   this.handleSubmit = this.handleSubmit.bind(this); */
-    this.startTestHandler = this.startTestHandler.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this); 
+    //this.startTestHandler = this.startTestHandler.bind(this);
   }
 
   handleComplexity(event) {
@@ -31,14 +31,7 @@ class IqTraining extends Component {
     });
   }
 
-  /*  handleSubmit(event) {
-    event.preventDefault();
-
-   console.log("Button clicked");
-   console.log(this.state.complexity);
-  console.log(this.state.timeout);
-  }
- */
+  /*
   startTestHandler(event) {
     console.log("Start Test Button clicked");
     console.log(this.state.complexity);
@@ -46,16 +39,10 @@ class IqTraining extends Component {
     this.setState({
       runTest: true
     });
-  }
+  }*/
 
   render() {
-    if (this.state.runTest) {
-      return (
-        <div>
-          <IQttyTest complexity={this.state.complexity} timeout={this.state.timeout}/>
-        </div>
-      );
-    } else {
+
       return (
         <section className="trainingsPage-container">
           <div>
@@ -77,7 +64,7 @@ class IqTraining extends Component {
               <article>
                 <h3>
                   {" "}
-                  <p>Select the complexity of your Tests:</p>
+                  <p>Select the complexity of your Test:</p>
                 </h3>
                 <li>
                   <label>
@@ -85,6 +72,7 @@ class IqTraining extends Component {
                       name="complexity"
                       type="radio"
                       value="Low"
+                      checked={true}
                       onChange={this.handleComplexity}
                     />
                     Low
@@ -129,7 +117,7 @@ class IqTraining extends Component {
               </article>
               <article>
                 <h3>
-                  <p>Timeout ?</p>
+                  <p>Timeout?</p>
                 </h3>
 
                 <li>
@@ -149,6 +137,7 @@ class IqTraining extends Component {
                       name="timeout"
                       type="radio"
                       value="no"
+                      checked={true}
                       onChange={this.handleTimeout}
                     />
                     No
@@ -158,18 +147,14 @@ class IqTraining extends Component {
             </section>
            
             <div className='buttonFlex'>
-            <button
-              className="trainingsPage-button"
-              onClick={this.startTestHandler}
-            >
-              Start Test
-             
-            </button>
+              <Link to = {`/test/new/${this.state.complexity}/${this.state.timeout}`}>
+                <button className="trainingsPage-button">Start Test</button>
+              </Link>
             </div>
           </div>
         </section>
       );
     }
   }
-}
+
 export default IqTraining;
