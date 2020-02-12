@@ -52,12 +52,10 @@ export default class App extends React.Component {
     }
   };
 
-  testRoute = props => {
+  testNewRoute = props => {
     if (this.state.user) {
-      console.log(
-      );
       return (
-        <IQttyTest testId={"random"} userName={this.state.user.username} />        
+        <IQttyTest {...props} userName={this.state.user.username}/>
       );
     } else {
       return <Redirect to="/" />;
@@ -70,32 +68,51 @@ export default class App extends React.Component {
       <div className="App">
         <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
-          <Route exact path="/test/new" render={this.testRoute} />
+          {/*<Route exact path="/test/new" render={this.testRoute} />*/}
 
-          <Route exact path="/test/id/:testId" render= {
-            props => <IQttyTest {...props} />
-          } />
-
+          <Route 
+            exact 
+            path="/test/id/:testId" 
+            render= {props => <IQttyTest {...props} />}
+          />
+          <Route 
+            exact 
+            path="/test/new/:complexity/:timeout" 
+            render= {this.testNewRoute}
+          />          
           <Route exact path="/review/id/:resultId" render= {
-            props => <TestReview {...props} />
-          } />
-
-          <Route exact path="/" component={IqStartpage} />
+            props => <TestReview {...props} /> } 
+          />
+          <Route 
+            exact 
+            path="/" 
+            component={IqStartpage} 
+          />
           <Route
             exact
             path="/signup"
             render={props => <IqSignup {...props} setUser={this.setUser} />}
           />
           <Route
-            exact
-            path="/login"
+            exact 
+            path="/login" 
             render={props => <IqLogin {...props} setUser={this.setUser} />}
           />
-          <Route exact path="/training" render={this.trainingRoute} />
-          <Route exact path="/resultlist" render={this.resultListRoute} />
-          {/* <Route exact path="/xadmin" component={IqAdmin} /> */}
-
-          <Route exact path="/result" render={this.resultRoute} />
+          <Route 
+            exact 
+            path="/training" 
+            render={this.trainingRoute}
+          />
+          <Route 
+            exact 
+            path="/resultlist" 
+            render={this.resultListRoute} 
+          />
+          <Route 
+            exact 
+            path="/result" 
+            render={this.resultRoute} 
+          />
         </Switch>
       </div>
     );

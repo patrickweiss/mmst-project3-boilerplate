@@ -65,8 +65,8 @@ while (selectedCats.length < numOfComponents) {
 }
 
 console.log("Categories selected for this case: " + selectedCats);
-//Retrieve all components
 
+//Retrieve all components
 TestComponent.find()
 .then(docs => {
     //mongoose.connection.close();
@@ -74,9 +74,8 @@ TestComponent.find()
 });   
 
 function createTestCases(comps) {
-  let numOfComponentsFromDB = comps.length;
+  
   let selectedComps = [];
-  //console.log("Number of components: " + numOfComponentsFromDB);  
 
   for (i = 0; i < selectedCats.length; i++) {
     let cat = selectedCats[i];

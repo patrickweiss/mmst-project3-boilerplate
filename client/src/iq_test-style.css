@@ -9,7 +9,8 @@
 
 
 #header {
-  margin-left: 25px;    
+  margin-left: 25px;
+  margin-top: 100px;
 }
 
 .menu-btn-off {
@@ -88,7 +89,7 @@
 }
 
 #test-and-loader {
-  padding-top: 20px;
+  padding-top: 80px;
   width: 400px;
   display: flex;
   align-content: space-between;
@@ -165,9 +166,9 @@
   align-items: center;
 }
 
-.op-desc {
+/* .op-desc {
 
-}
+} */
 
 .formula-row {
   display:flex;
@@ -193,4 +194,9 @@
   margin: 2px;
   width:56px;
   height:56px;
+}
+
+.error-msg{
+  margin-top: 300px;
+  margin-left: 50px;
 }

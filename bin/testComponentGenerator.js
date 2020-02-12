@@ -32,7 +32,7 @@ const operations = [
   {name: "NAND", desc: "Negative intersect of"},
   {name: "OR",   desc: "Union of"},
   {name: "NOR",  desc: "Negative union of"},
-  {name: "XOR",  desc: "Exclusive union of"},
+  {name: "XOR",  desc: "Exclusive union of"}
   //{name: "CW",   desc: "Clockwise rotation of"},
   //{name: "CCW",  desc: "Counter-clockwise rotation of"}
 ]; 
@@ -69,19 +69,15 @@ console.log("===================================================================
      
         TestComponent.create(testComponent, (err) => {
           if (err) { throw (err) }
-          
         });
   
-
       }
     });
-
   }  //end of category processing
 
 
 console.log("Generated: " + countComponents + " components");
 
-//Functions
 /*
 function validate(catname, opResults) {
   let uniqueRes = opResults.map((e,i,a) => {
@@ -92,7 +88,6 @@ function validate(catname, opResults) {
   });
   return valid;
 }
-
 */
 
 function validate(catname, line1, line2, line3) {

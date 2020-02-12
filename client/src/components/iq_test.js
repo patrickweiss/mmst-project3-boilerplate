@@ -11,7 +11,7 @@ export default class IQttyTest extends Component {
 
     this.caseStartTimestamp = 0;
     this.testTime = 0;            //sum of case times 
-    this.caseLimit = 300 * 1000;  //time limit per case
+    this.caseLimit = (this.props.match.params.timeout === "yes") ? 90*1000 : 60*60*1000;  //time limit per case
     this.animLimit = 2 * 1000;    //time between cases
     this.caseTimer = 0;
     this.loadTimer = 0;
@@ -124,8 +124,8 @@ export default class IQttyTest extends Component {
 
   componentDidMount() {
 
-    if (this.props.testId === "random")
-      axios.get(`/api/tests/random`)  
+    if (this.props.match.params.complexity)
+      axios.get(`/api/tests?complexity=${this.props.match.params.complexity}`)  
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
@@ -143,13 +143,20 @@ export default class IQttyTest extends Component {
   }
 
   render() {    
-    if (this.state.endOfTest) {
+    /*if (!this.state.test) 
+      return (
+        <div className='error-msg'>
+          <h3>Sorry! No test available</h3>
+        </div>
+      );*/  
+
+    if (this.state.endOfTest)
       return (
         <div>
           <Iqresult />
         </div>
-      );  //=> result page
-    }
+      ); 
+
     else if (this.state.animOn) {
       //const curTest = this.props.test;
       const curTest = this.state.test;
@@ -165,16 +172,30 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
             </div>
             <div>
-              <img src="../robot.gif" alt="" width="500"/>
+              <img src="/robot.gif" alt="" width="500"/>
             
             </div>            
         </div>
       );
     }
+
     else if (this.state.currentCaseIdx === -1) {
       return (
         <div className = "testpage-background">
             <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
+            <div> 
+              Your test has not started yet.<br/>
+              Now, you have time for getting familiar with the layout and buttons.<br/>
+              The keyboard at the bottom consists of 24 buttons representing 
+              6 sets of shapes: lines, arcs, dots, stars and square, arrows, and circles.
+              By clicking on a button you are adding a corresponding shape to your answer.
+              By clicking it again you are revoking your choice. Please try.<br/>
+
+              The Reset button will clear your answer completely. Try this one, too.<br/>
+
+              The Start Test will load the first test case and the test will begin.
+
+            </div>
         </div>
       );
     }
@@ -193,6 +214,23 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>  
             </div>
             <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
+            {(this.state.currentCaseIdx === 0) ?
+              <div> 
+                Your first test case is there!<br/>
+
+                In the  3x3 matrix you see a mix of shapes.<br/>
+                Your first step is to identify the shape categories used.<br/>
+                Then, for each category, please analyze the logic applied to the 
+                category in rows 1 and 2. <br/>Finally, choose your answer in row 3, using the same logic.<br/>
+
+                When you are ready with your answer please Submit to proceed to the next test case.<br/>
+
+                If you are interested, here is a small tip for you: the "logic" is based on the basic
+                set operations: union, intersection, complement, and symmetric difference.<br/>
+                -------- wiki link ----------
+              </div>
+              : null              
+              }
         </div>
       );
     }
