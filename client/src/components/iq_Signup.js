@@ -37,7 +37,7 @@ class IqSignup extends Component {
     console.log(this.props);
     return (
       <div>
-        <h2>Signup</h2>
+        <h2 className = "signup-login-header">Signup</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label htmlFor="username">Username: </Form.Label>

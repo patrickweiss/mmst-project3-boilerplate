@@ -172,7 +172,8 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
             </div>
             <div>
-              <img src="/loader.gif" alt="" width="300"/>
+              <img src="/robot.gif" alt="" width="500"/>
+            
             </div>            
         </div>
       );
@@ -180,7 +181,7 @@ export default class IQttyTest extends Component {
 
     else if (this.state.currentCaseIdx === -1) {
       return (
-        <div>
+        <div className = "testpage-background">
             <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
             <div> 
               Your test has not started yet.<br/>
@@ -202,7 +203,7 @@ export default class IQttyTest extends Component {
       const curTest = this.state.test;
       const curCase = this.state.cases[this.state.currentCaseIdx];
       return (
-        <div>
+        <div className = "testpage-background">
             <div id="header">
                 <div><h2><span>Test: </span> <span id="test-name">{curTest.testName}</span></h2></div>   
                 <div>
