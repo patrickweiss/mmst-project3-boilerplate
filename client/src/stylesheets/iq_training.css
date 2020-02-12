@@ -8,7 +8,7 @@
   height: 50vw;
   display: flex;
   flex-direction: row;
-  align-items: center;    
+  align-items: center;      
 }
 
 .trainingsPage-container h1{
@@ -35,6 +35,8 @@
   font-size: 15px;
   margin-left: 35rem;
   
+  margin-bottom: 1rem;
+  margin-left: 1rem;  
 }
 
 .trainingsPage-button:hover {

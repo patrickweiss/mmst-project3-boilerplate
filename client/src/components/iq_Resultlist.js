@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../stylesheets/iq_resultlist.css';
-import '../stylesheets/iq_resultlist.css'
 /* import TestReview from "./iq_test-review" */
 import {Link} from "react-router-dom";
 
@@ -44,10 +43,12 @@ class IqResultlist extends Component {
       );
     } */
 
+    
     const resultList = this.state.results.map(result => {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
+      
       return (
         <div className="trResultlist" key={result._id}>
           <div className="tdResultlist">{result.userName}</div>
@@ -58,10 +59,10 @@ class IqResultlist extends Component {
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
           
-          <Link to = {`/test/id/${result.testId}`}><button className="trainingsPage-button" id= {result.testId}>Test Again</button></Link>
+          <Link to = {`/test/id/${result.testId}`}><button className="resultlistPage-button" id= {result.testId}>Test Again</button></Link>
           
           {/* <<<<<<<<<<<<<<<<<<<<<<<<<<<  New */}
-          <Link to = {`/review/id/${result._id}`}><button className="trainingsPage-button" id= {result._id}>Review</button></Link>
+          <Link to = {`/review/id/${result._id}`}><button className="resultlistPage-button" id= {result._id}>Review</button></Link>
 
           {/* <button className="trainingsPage-button" id={result._id} onClick={this.reviewClickHandler}>Review</button> */}
         </div>

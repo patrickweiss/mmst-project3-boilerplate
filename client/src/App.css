@@ -2,9 +2,9 @@
   text-align: center;
 } */
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -21,10 +21,10 @@
   color: #09d3ac;
 }
 
-/* form {
-  max-width: 50vw;
+form {
+  max-width: 30vw;
   margin: 0 auto;
-} */
+}
 
 /* button {
   margin: 1px;
@@ -36,12 +36,18 @@
 }
 
 nav{
-  height: 75px;
+  height: 75px;  
 }
 /* h1,
 h2 {
   margin-top: 20px;
 } */
+
+.signup-login-header {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
+}
 
 .nav a:hover {
   text-decoration: none;

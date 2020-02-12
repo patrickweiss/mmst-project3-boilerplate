@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import '../iq_test-style.css';
 import DiagramCanvas from './iq_diagram-canvas.js';
 import {decodePicture} from "./iq_utils.js";
-import {Link} from "react-router-dom";
 import CaseReview from "./iq_case-review";
 import axios from 'axios';
 
@@ -142,8 +141,7 @@ export default class TestReview extends Component {
           </div>
           <ul>
              {listOfCasesJSX}
-          </ul>
-          <Link to="/resultlist"> Back to Result List</Link>
+          </ul>          
       </div>
     );
   }

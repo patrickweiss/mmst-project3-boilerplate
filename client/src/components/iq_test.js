@@ -172,7 +172,8 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
             </div>
             <div>
-              <img src="/loader.gif" alt="" width="300"/>
+              <img src="/robot.gif" alt="" width="500"/>
+            
             </div>            
         </div>
       );
@@ -180,8 +181,21 @@ export default class IQttyTest extends Component {
 
     else if (this.state.currentCaseIdx === -1) {
       return (
-        <div>
+        <div className = "testpage-background">
             <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
+            <div> 
+              Your test has not started yet.<br/>
+              Now, you have time for getting familiar with the layout and buttons.<br/>
+              The keyboard at the bottom consists of 24 buttons representing 
+              6 sets of shapes: lines, arcs, dots, stars and square, arrows, and circles.
+              By clicking on a button you are adding a corresponding shape to your answer.
+              By clicking it again you are revoking your choice. Please try.<br/>
+
+              The Reset button will clear your answer completely. Try this one, too.<br/>
+
+              The Start Test will load the first test case and the test will begin.
+
+            </div>
         </div>
       );
     }
@@ -189,7 +203,7 @@ export default class IQttyTest extends Component {
       const curTest = this.state.test;
       const curCase = this.state.cases[this.state.currentCaseIdx];
       return (
-        <div>
+        <div className = "testpage-background">
             <div id="header">
                 <div><h2><span>Test: </span> <span id="test-name">{curTest.testName}</span></h2></div>   
                 <div>
@@ -200,6 +214,23 @@ export default class IQttyTest extends Component {
                 <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>  
             </div>
             <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
+            {(this.state.currentCaseIdx === 0) ?
+              <div> 
+                Your first test case is there!<br/>
+
+                In the  3x3 matrix you see a mix of shapes.<br/>
+                Your first step is to identify the shape categories used.<br/>
+                Then, for each category, please analyze the logic applied to the 
+                category in rows 1 and 2. <br/>Finally, choose your answer in row 3, using the same logic.<br/>
+
+                When you are ready with your answer please Submit to proceed to the next test case.<br/>
+
+                If you are interested, here is a small tip for you: the "logic" is based on the basic
+                set operations: union, intersection, complement, and symmetric difference.<br/>
+                -------- wiki link ----------
+              </div>
+              : null              
+              }
         </div>
       );
     }
