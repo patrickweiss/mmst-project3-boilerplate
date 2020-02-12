@@ -81,8 +81,8 @@
 }
 
 .shake:hover {
-  -webkit-animation: shake ease-in 70ms infinite;
-  animation: shake 70ms ease-in infinite
+  -webkit-animation: shake ease-in 500ms infinite;
+  animation: shake 500ms ease-in infinite
 }
 
 
