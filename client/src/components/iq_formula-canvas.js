@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../iq_test-style.css';
+import '../stylesheets/iq_test-style.css';
 import DiagramCanvas from './iq_diagram-canvas.js';
 import {decodePicture} from "./iq_utils.js";
 

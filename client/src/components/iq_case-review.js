@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../iq_test-style.css';
+import '../stylesheets/iq_test-style.css';
 import FormulaCanvas from "./iq_formula-canvas.js";
 
 export default class CaseReview extends Component {

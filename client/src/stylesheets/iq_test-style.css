@@ -1,6 +1,6 @@
 .testpage-background {
   padding: 2rem;
-  background: url(./iq_matrixBlue.png);
+  background: url(../iq_matrixBlue.png);
   background-repeat: no-repeat;
   background-size: 60%;
   background-position-x: 100%;
@@ -199,4 +199,21 @@
 .error-msg{
   margin-top: 300px;
   margin-left: 50px;
+}
+
+.more-less-btn{
+  height: 40px;
+  width: 90px;
+  background-color: #2081c3;
+  color: white;
+  border-radius: 4px;  
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.more-less-btn:hover {
+  background-color: green;
+  color: white;
 }
