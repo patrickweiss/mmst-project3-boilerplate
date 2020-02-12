@@ -1,4 +1,3 @@
-//import React, { Component } from 'react';
 import React from "react";
 import "./App.css";
 import IQttyTest from "./components/iq_test.js";
@@ -6,15 +5,11 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import IqNavbar from "./components/iq_Navbar";
 import IqStartpage from "./components/iq_Startpage";
-/* import Projects from "./components/Projects";
-import ProjectDetail from "./components/ProjectDetail";
-import TaskDetail from "./components/TaskDetail"; */
 import IqSignup from "./components/iq_Signup";
 import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
 import IqResultlist from "./components/iq_Resultlist";
 import Iqresult from "./components/iq_result";
-/* import IqAdmin from "./components/iq_admin.js/index.js.js"; */
 import TestReview from "./components/iq_test-review"
 
 export default class App extends React.Component {
@@ -68,7 +63,6 @@ export default class App extends React.Component {
       <div className="App">
         <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
-          {/*<Route exact path="/test/new" render={this.testRoute} />*/}
 
           <Route 
             exact 

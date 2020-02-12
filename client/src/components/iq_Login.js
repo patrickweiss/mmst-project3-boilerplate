@@ -40,7 +40,7 @@ class IqLogin extends Component {
         <h2 className = "signup-login-header">Login</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Label htmlFor="username">User name: </Form.Label>
             <Form.Control
               type="text"
               name="username"

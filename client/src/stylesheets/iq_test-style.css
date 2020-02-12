@@ -4,13 +4,20 @@
   background-repeat: no-repeat;
   background-size: 60%;
   background-position-x: 100%;
-  background-position-y: 100%;  
+  background-position-y: 100%;
 }
 
+.testpage-background2 {
+  background: url(./iq_matrixBlue.png);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position-x: 100%;
+  background-position-y:  top;
+}
 
 #header {
   margin-left: 25px;
-  margin-top: 100px;
+  margin-top: 85px;
 }
 
 .menu-btn-off {
@@ -74,8 +81,8 @@
 }
 
 .shake:hover {
-  -webkit-animation: shake ease-in 70ms infinite;
-  animation: shake 70ms ease-in infinite
+  -webkit-animation: shake ease-in 500ms infinite;
+  animation: shake 500ms ease-in infinite
 }
 
 
@@ -217,3 +224,56 @@
   background-color: green;
   color: white;
 }
+.startPageFlex{
+ display: flex;
+ margin-top: 4rem;
+ width: 1200px;
+}
+
+.textStartPage{
+  margin-top: 340px;
+  background-color: #2081c3;
+  padding: 10px;
+  color: white;
+  width: 600px;
+  height: 225px;
+  opacity: 0.9;
+}
+
+.startTestCase{
+  display: flex;
+  width: 500px;
+}
+
+span {
+  font-weight: bold;
+}
+
+/*<<<<<<<<<<<<<<<<<TestPage >>>>>>>>>*/
+
+.startPageFlex2{
+  display: flex;
+  
+  width: 1000px;
+  height: 500px;
+ 
+ }
+
+.startTestCase2{
+  display: flex;
+  width: 500px;
+ padding-bottom: 200px;
+  
+}
+
+
+.textTestPage{
+  margin-top: 100px;
+  background-color: #2081c3;
+  padding: 10px;
+  color: white;
+  width: 600px;
+  height: 300px;
+  opacity: 0.9;
+}
+

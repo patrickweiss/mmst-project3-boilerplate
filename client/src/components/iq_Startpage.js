@@ -8,8 +8,7 @@ class IqStartpage extends React.Component {
     return (
       <section className="homePage-container">
         <div>
-          <h1>IQtty</h1>
-          <p>Use our brain trainer</p>
+          <h1>IQtty</h1>          
           <p>Prepare for Assessment Centers and Logic-Tests</p>
           <p>Signup and try our amazing brain game</p>
         </div>

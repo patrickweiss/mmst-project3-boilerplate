@@ -43,44 +43,46 @@ export class Iqresult extends Component {
         </div>
 
         <div className="tableresult">
-          <div className="resulttr1">
-            <div className="resultth">Name :</div>
+          {/* <div className="resulttr1">
+            <div className="resultth">Your Name :</div>
             <div className="resulttd">{this.state.result.userName}</div>
-          </div>
-          <div className="resulttr">
+          </div> */}
+          <div className="resulttr1">
             <div className="resultth">Test Name :</div>
             <div className="resulttd">{this.state.result.testName}</div>
-          </div>
-          <div className="resulttr1">
-            <div className="resultth">Elapsed Time :</div>
-            <div className="resulttd">{this.state.result.elapsedTime}</div>
-          </div>
-          <div className="resulttr">
-            <div className="resultth">Executed Cases :</div>
-            <div className="resulttd">{this.state.result.numberOfCases}</div>
-          </div>
-          <div className="resulttr1">
-            <div className="resultth">Your Score :</div>
-            <div className="resulttd">{this.state.result.score}</div>
           </div>
           <div className="resulttr">
             <div className="resultth">Complexity :</div>
             <div className="resulttd">{this.state.result.complexity}</div>
           </div>
           <div className="resulttr1">
+            <div className="resultth">Executed Cases :</div>
+            <div className="resulttd">{this.state.result.numberOfCases}</div>
+          </div>
+          <div className="resulttr">
+            <div className="resultth">Elapsed Time :</div>
+            <div className="resulttd">{this.state.result.elapsedTime} seconds</div>
+          </div>
+          
+          <div className="resulttr1">
+            <div className="resultth">Your Score :</div>
+            <div className="resulttd">{this.state.result.score}</div>
+          </div>
+          
+          <div className="resulttr">
             <div className="resultth">Percentage :</div>
-            <div className="resulttd">{ergebnis}</div>
+            <div className="resulttd">{ergebnis} %</div>
           </div>
         </div>
-        <div className="resultfooter">
+        {/* <div className="resultfooter">
           <h1>You have reached : {this.state.result.score}  Points</h1>
-        </div>
+        </div> */}
 
         <div className="buttonbox">
           
-        <Link to="/training" style={{color:'white', textDecoration:'none'}}>
+       {/*  <Link to="/training" style={{color:'white', textDecoration:'none'}}>
             <button className="rbutton">Training</button>
-        </Link>
+        </Link> */}
         <Link to="/resultlist" style={{color:'white', textDecoration:'none'}} >
             <button className="rbutton">Resultlist</button>
         </Link>
