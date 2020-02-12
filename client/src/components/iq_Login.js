@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { signup } from "../services/auth";
+import { login } from "../services/auth";
 import { Alert, Form, Button } from "react-bootstrap";
 
-class Signup extends Component {
+class IqLogin extends Component {
   state = {
     username: "",
     password: "",
@@ -17,7 +17,8 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    signup(this.state.username, this.state.password).then(data => {
+
+    login(this.state.username, this.state.password).then(data => {
       if (data.message) {
         // handle errors
         this.setState({
@@ -28,16 +29,15 @@ class Signup extends Component {
         // lift the data up to the App state
         this.props.setUser(data);
         // redirect to "/projects"
-        this.props.history.push("/projects");
+        this.props.history.push("/training");
       }
     });
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <h2>Signup</h2>
+        <h2 className = "signup-login-header">Login</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label htmlFor="username">Username: </Form.Label>
@@ -62,11 +62,11 @@ class Signup extends Component {
           {this.state.error && (
             <Alert variant="danger">{this.state.error}</Alert>
           )}
-          <Button type="submit">Sign up</Button>
+          <Button type="submit">Log in</Button>
         </Form>
       </div>
     );
   }
 }
 
-export default Signup;
+export default IqLogin;

@@ -1,0 +1,30 @@
+<h1>thats our admin page</h1>
+
+ <button onclick= "generateComponents()">1. Generate Test Components</button>
+ <p id="answer"></p>
+ <br> 
+ <br>
+ <button onclick="generateCases()">2. Generate one Test Case</button>
+ Number of Components: 
+ <input  id="compNumber" type="number" max="6" min="1" alt="Number of Components">
+ <p id="casesAnswer"></p>
+ <br>
+ <br>
+
+ <div>
+ <button onclick="generateTests()">3. Generate one Test</button>
+ Number of Test Cases: <input id="numbTc" type="number"  max="10" min="1">
+ Complexity: 
+ <select id="caseComplexity">
+  <option value="Low">Low</option>
+  <option value="Medium">Medium</option>
+  <option value="High">High</option>
+</select>
+ 
+ <!--input id="caseComplexity" type="number" max="3" min="1"-->
+  
+ <p id="testsAnswer"> </p>
+ </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+<script src="/javascripts/admin.js"></script>
