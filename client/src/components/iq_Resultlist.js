@@ -48,14 +48,17 @@ class IqResultlist extends Component {
       let caseNumber = result.numberOfCases;
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
-      
+      let d = new Date(result.createdAt);
+      let resDate = d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate();
+      let resTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+
       return (
         <div className="trResultlist" key={result._id}>
-          <div className="tdResultlist">{result.userName}</div>
+          <div className="tdResultlist">{resDate} {resTime}</div>
           <div className="tdResultlist">{result.testName}</div>
           <div className="tdResultlist">{result.complexity}</div>
-          <div className="tdResultlist">{result.elapsedTime}</div>
           <div className="tdResultlist">{result.numberOfCases}</div>
+          <div className="tdResultlist">{result.elapsedTime} sec</div>          
           <div className="tdResultlist">{result.score}</div>
           <div className="tdResultlist">{resultInPercentage} %</div>
           
@@ -76,12 +79,12 @@ class IqResultlist extends Component {
             <h1 className="header">Your Test Results</h1>
             <div className="tableResultlist-box">        
               <div className="tableResultlist">
-                <div className="trResultlist">
-                  <div className="thResultlist">User</div>
+                <div className="trResultlist-header">
+                  <div className="thResultlist">Run on</div>
                   <div className="thResultlist">Test</div>
                   <div className="thResultlist">Complexity</div>
-                  <div className="thResultlist">Elapsed Time</div>
-                  <div className="thResultlist">Number of Test Cases</div>
+                  <div className="thResultlist">#of Cases</div>
+                  <div className="thResultlist">Elapsed Time</div>                  
                   <div className="thResultlist">Score</div>
                   <div className="thResultlist">Result</div>
                   <div className="thResultlist"></div>

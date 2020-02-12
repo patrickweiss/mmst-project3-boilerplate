@@ -45,27 +45,18 @@ class IqTraining extends Component {
 
       return (
         <section className="trainingsPage-container">
-          <div>
-            <h1>Welcome to IQtty training</h1>
-            <p>
-              Matrix tests are used in assessment centers to examine your skills
-              in inductive reasoning.
-            </p>
-            <p>A matrix consists of nine boxes. One box is empty.</p>
-            <p>
-              Your task is to discover logical connections and compose the empty
-              box based on the rule you found.
-            </p>
-            <p>Click here to start a test</p>
-
-           
+          <div className="trainingsPage-text">
+            <h1>Welcome to IQtty training</h1>            
+              Matrix tests are used in assessment centers to examine<br/>
+              your skills in inductive reasoning.<br/>
+              A matrix consists of nine boxes. One box is empty.<br/>
+              Your task is to discover logical connections and compose<br/>
+              the empty box based on the rule you found.<br/>            
+              Please select your options & start a test.<br/>           
 
             <section id="selection">
               <article>
-                <h3>
-                  {" "}
-                  <p>Select the complexity of your Test:</p>
-                </h3>
+                <h3>Select the complexity of your Test:</h3>
                 <li>
                   <label>
                     <input
@@ -116,9 +107,7 @@ class IqTraining extends Component {
                 </li>
               </article>
               <article>
-                <h3>
-                  <p>Timeout?</p>
-                </h3>
+                <h3>Time limit?</h3>
 
                 <li>
                   <label>
@@ -128,7 +117,7 @@ class IqTraining extends Component {
                       value="yes"
                       onChange={this.handleTimeout}
                     />
-                    Yes
+                    Yes (90 sec per test case)
                   </label>
                 </li>
                 <li>
@@ -144,14 +133,13 @@ class IqTraining extends Component {
                   </label>
                 </li>
               </article>
-            </section>
-           
-            <div className='buttonFlex'>
+            </section>                       
+          </div>
+          <div className = "button-container">
               <Link to = {`/test/new/${this.state.complexity}/${this.state.timeout}`}>
                 <button className="trainingsPage-button">Start Test</button>
               </Link>
             </div>
-          </div>
         </section>
       );
     }
