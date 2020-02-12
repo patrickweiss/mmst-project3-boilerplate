@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../iq_test-style.css';
+import '../stylesheets/iq_test-style.css';
 import DiagramCanvas from './iq_diagram-canvas.js';
 import {decodePicture} from "./iq_utils.js";
 import CaseReview from "./iq_case-review";
@@ -13,7 +13,8 @@ export default class TestReview extends Component {
     this.state = {
       test: null,  //Test obj from DB  
       cases: [],  //Array of cases from DB 
-      isDetailView: []  
+      result: null,
+      isDetailView: [true]  
     }
   }
     
@@ -25,7 +26,7 @@ export default class TestReview extends Component {
 
     const resultId = this.props.match.params.resultId;
     
-    console.log(">>>>>>> Result ID from Karin: ", resultId);
+    //console.log(">>>>>>> Result ID from Karin: ", resultId);
 
     axios.get(`/api/results/id/${resultId}`)
       .then(resultData => {
@@ -41,23 +42,7 @@ export default class TestReview extends Component {
       })
   }
 
-
-/*
-
-    const testId = this.props.resultObj.testId;
-    axios.get(`/api/tests/id/${testId}`)
-      .then(resFromApi => {
-        this.setState({
-          test: resFromApi.data.testData,
-          cases: resFromApi.data.arrayOfCases,
-          isDetailView: resFromApi.data.arrayOfCases.map (c => false) 
-        })
-      });      
-  }
-  */
-
   lessBtnHandler =  e => {
-    console.log("LESS button clicked for case ", e.target.id);
     const isDetailViewCopy = [...this.state.isDetailView];
     isDetailViewCopy[e.target.id] = false;
     this.setState ({
@@ -66,7 +51,6 @@ export default class TestReview extends Component {
   }
 
   moreBtnHandler =  e => {
-    console.log("MORE button clicked for case ", e.target.id);
     const isDetailViewCopy = [...this.state.isDetailView];
     isDetailViewCopy[e.target.id] = true;
     this.setState ({
@@ -79,17 +63,18 @@ export default class TestReview extends Component {
     const test = this.state.test;
     const result = this.state.result;
 
-    
-
     if (!test) return (null);  //render nothing if there is no test data
 
+    const d = new Date(result.createdAt);
+    const resDate = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+    const resTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
-    console.log(">>>>>>RESULT OBJECT", result);
-    console.log(">>>>>>TEST OBJECT", test);
+    //console.log(">>>>>>RESULT OBJECT", result);
+    //console.log(">>>>>>TEST OBJECT", test);
 
     const listOfCasesJSX = this.state.cases.map((c,i) => 
            <li key = {c._id} > 
-              <h5>Case {i+1}</h5>
+              <h5><b>Case {i+1}</b></h5>
               <div className="test-rev-row">
               <div className="canvas-matrix">  
                 <div className="board-row">
@@ -110,12 +95,12 @@ export default class TestReview extends Component {
 
                   {(this.compare(c.line3.result, result.answers[i])) ?
                     <div className="answer-row">  
-                      <div>Your answer <br/> is correct</div> 
+                      <div><b>Your answer <br/> is correct</b></div> 
                       <div className="answer-cell-ok"><DiagramCanvas shapes={decodePicture(result.answers[i])}/></div>  
                     </div>                   
                    :
                     <div className="answer-row">  
-                      <div>Your answer <br/> is wrong</div> 
+                      <div><b>Your answer <br/> is wrong</b></div> 
                       <div className="answer-cell-err"><DiagramCanvas shapes={decodePicture(result.answers[i])}/></div>   
                     </div>            
                   }
@@ -123,12 +108,12 @@ export default class TestReview extends Component {
               </div>
               {(this.state.isDetailView[i]) ?
                  <div className="case-rev">
-                   <div><button id={i} onClick={this.lessBtnHandler}>less...</button></div>
+                   <div><button id={i} className="more-less-btn" onClick={this.lessBtnHandler}>less...</button></div>
                    <div><CaseReview caseObj={c} caseIdx={i} answer={c.line3.result}/></div>
                  </div>
                  :
                  <div className="case-rev">
-                   <div><button id={i} onClick={this.moreBtnHandler}>more...</button></div>
+                   <div><button id={i} className="more-less-btn" onClick={this.moreBtnHandler}>more...</button></div>
                  </div>
               }
             </div>
@@ -137,7 +122,8 @@ export default class TestReview extends Component {
     return (
       <div>
           <div id="header">
-              <div><h4><span>Result for the test </span> <span id="test-name">{test.testName}</span></h4></div>   
+            <div><h4 id="test-name">Result for the <b>Test {test.testName}</b> of {resDate} at {resTime}</h4></div>  
+            <br/> 
           </div>
           <ul>
              {listOfCasesJSX}

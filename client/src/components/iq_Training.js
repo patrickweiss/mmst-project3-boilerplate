@@ -10,13 +10,10 @@ class IqTraining extends Component {
     this.state = {
       complexity: "Low",
       timeout: "no",
-      //runTest: false
     };
 
     this.handleComplexity = this.handleComplexity.bind(this);
     this.handleTimeout = this.handleTimeout.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this); 
-    //this.startTestHandler = this.startTestHandler.bind(this);
   }
 
   handleComplexity(event) {
@@ -31,17 +28,7 @@ class IqTraining extends Component {
     });
   }
 
-  /*
-  startTestHandler(event) {
-    console.log("Start Test Button clicked");
-    console.log(this.state.complexity);
-    console.log(this.state.timeout);
-    this.setState({
-      runTest: true
-    });
-  }*/
-
-  render() {
+   render() {
 
       return (
         <section className="trainingsPage-container">

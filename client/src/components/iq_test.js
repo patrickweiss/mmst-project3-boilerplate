@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "../iq_test-style.css";
-import TestCase from "./iq_test-case.js";
+import React, { Component } from 'react'
+import '../stylesheets/iq_test-style.css'
+import TestCase from './iq_test-case.js';
 import Iqresult from "./iq_result";
 import axios from "axios";
 
