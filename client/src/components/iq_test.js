@@ -1,37 +1,38 @@
-import React, { Component } from 'react'
-import '../iq_test-style.css';
-import TestCase from './iq_test-case.js';
+import React, { Component } from "react";
+import "../iq_test-style.css";
+import TestCase from "./iq_test-case.js";
 import Iqresult from "./iq_result";
-import axios from 'axios';
+import axios from "axios";
 
 export default class IQttyTest extends Component {
-
   constructor(props) {
     super(props);
 
     this.caseStartTimestamp = 0;
-    this.testTime = 0;            //sum of case times 
-    this.caseLimit = (this.props.match.params.timeout === "yes") ? 90*1000 : 60*60*1000;  //time limit per case
-    this.animLimit = 2 * 1000;    //time between cases
+    this.testTime = 0; //sum of case times
+    this.caseLimit =
+      this.props.match.params.timeout === "yes" ? 90 * 1000 : 60 * 60 * 1000; //time limit per case
+    this.animLimit = 2 * 1000; //time between cases
     this.caseTimer = 0;
     this.loadTimer = 0;
     this.currentScore = 0;
 
     this.state = {
-      test: null,   //Test obj from DB  
-      cases: null,  //Array of cases from DB 
+      test: null, //Test obj from DB
+      cases: null, //Array of cases from DB
       currentCaseIdx: -1,
       answers: [],
       endOfTest: false,
       animOn: false
-    }
+    };
   }
-    
-  nextCaseHandler = (answer) => {
+
+  nextCaseHandler = answer => {
     clearTimeout(this.caseTimer);
 
-    if (this.state.currentCaseIdx === - 1) {        //Load the first case
-      this.setState ({
+    if (this.state.currentCaseIdx === -1) {
+      //Load the first case
+      this.setState({
         currentCaseIdx: this.state.currentCaseIdx + 1,
         animOn: true,
         endOfTest: false,
@@ -41,32 +42,36 @@ export default class IQttyTest extends Component {
       return;
     }
 
-    if (this.state.currentCaseIdx === this.state.cases.length - 1) {  //Finish the test
+    if (this.state.currentCaseIdx === this.state.cases.length - 1) {
+      //Finish the test
 
-      this.testTime = this.testTime + ((new Date()).getTime() - this.caseStartTimestamp);
+      this.testTime =
+        this.testTime + (new Date().getTime() - this.caseStartTimestamp);
 
       const answersCopy = [...this.state.answers];
-      answersCopy.push(answer)
+      answersCopy.push(answer);
       //check answer and update score
-      this.currentScore = this.answerCorrect(answer) ? this.currentScore + 1 : this.currentScore;
+      this.currentScore = this.answerCorrect(answer)
+        ? this.currentScore + 1
+        : this.currentScore;
 
       this.finishTest(answersCopy);
 
-      this.setState({answers: answersCopy,
-                     animOn: false,
-                     endOfTest: true  
-      });
+      this.setState({ answers: answersCopy, animOn: false, endOfTest: true });
       return;
     }
-    
-    this.testTime = this.testTime + ((new Date()).getTime() - this.caseStartTimestamp);
-    
+
+    this.testTime =
+      this.testTime + (new Date().getTime() - this.caseStartTimestamp);
+
     //check answer and update score
-    this.currentScore = this.answerCorrect(answer) ? this.currentScore + 1 : this.currentScore;
+    this.currentScore = this.answerCorrect(answer)
+      ? this.currentScore + 1
+      : this.currentScore;
 
     const answersCopy = [...this.state.answers];
-    answersCopy.push(answer)
-    this.setState ({
+    answersCopy.push(answer);
+    this.setState({
       currentCaseIdx: this.state.currentCaseIdx + 1,
       animOn: true,
       endOfTest: false,
@@ -74,47 +79,44 @@ export default class IQttyTest extends Component {
     });
 
     this.loadTimer = setTimeout(this.animTimeout.bind(this), this.animLimit);
-    
-  }
+  };
 
   animTimeout() {
-    this.caseStartTimestamp = (new Date()).getTime();
-    this.setState ({animOn: false});
+    this.caseStartTimestamp = new Date().getTime();
+    this.setState({ animOn: false });
     this.caseTimer = setTimeout(this.caseTimeout.bind(this), this.caseLimit);
-
   }
-    
+
   caseTimeout() {
-      this.nextCaseHandler("000000");
+    this.nextCaseHandler("000000");
   }
 
-  answerCorrect(answer) { 
+  answerCorrect(answer) {
     const sysAnswer = this.state.cases[this.state.currentCaseIdx].line3.result;
-    const correct = (parseInt(answer,16) === parseInt(sysAnswer,16)); 
+    const correct = parseInt(answer, 16) === parseInt(sysAnswer, 16);
     //console.log(">>> System answer: " + sysAnswer + " Your answer: " + answer + " is " + correct );
     return correct;
   }
 
   finishTest(answers) {
-
     //NOTE: In order to store answers, a model extension will be required
     //Suggestion: store the testId as well
 
-    const testResult = { 
-      userName: this.props.userName, 
+    const testResult = {
+      userName: this.props.userName,
       testName: this.state.test.testName,
       complexity: this.state.test.complexity,
-      elapsedTime: (this.testTime/1000).toFixed(1),
+      elapsedTime: (this.testTime / 1000).toFixed(1),
       numberOfCases: this.state.test.cases.length,
       score: this.currentScore,
       answers: answers,
       testId: this.state.test._id
-  
-    }
+    };
 
     //Send result to the DB
-    axios.post("/api/results", testResult) 
-      .then(fromServer => {  
+    axios
+      .post("/api/results", testResult)
+      .then(fromServer => {
         //console.log("Result stored. Response from server: " + fromServer.data);
       })
       .catch(err => {
@@ -123,114 +125,157 @@ export default class IQttyTest extends Component {
   }
 
   componentDidMount() {
-
     if (this.props.match.params.complexity)
-      axios.get(`/api/tests?complexity=${this.props.match.params.complexity}`)  
+      axios
+        .get(`/api/tests?complexity=${this.props.match.params.complexity}`)
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
             cases: resFromApi.data.arrayOfCases
-          })
+          });
         });
-    else 
-      axios.get(`/api/tests/id/${this.props.match.params.testId}`)
+    else
+      axios
+        .get(`/api/tests/id/${this.props.match.params.testId}`)
         .then(resFromApi => {
           this.setState({
             test: resFromApi.data.testData,
             cases: resFromApi.data.arrayOfCases
-          })
-        });      
+          });
+        });
   }
 
-  render() {    
+  render() {
     /*if (!this.state.test) 
       return (
         <div className='error-msg'>
           <h3>Sorry! No test available</h3>
         </div>
-      );*/  
+      );*/
 
     if (this.state.endOfTest)
       return (
         <div>
           <Iqresult />
         </div>
-      ); 
-
+      );
     else if (this.state.animOn) {
       //const curTest = this.props.test;
       const curTest = this.state.test;
       return (
-          <div>
-            <div id="header">
-                <div><h2><span>Test: </span> <span id="test-name">{curTest.testName}</span></h2></div>   
-                <div>
-                    <h3 id="current-case">
-                      Case: {this.state.currentCaseIdx + 1} / {this.state.cases.length}
-                    </h3>
-                </div>   
-                <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>                
+        <div>
+          <div id="header">
+            <div>
+              <h2>
+                <span>Test: </span>{" "}
+                <span id="test-name">{curTest.testName}</span>
+              </h2>
             </div>
             <div>
-              <img src="/robot.gif" alt="" width="500"/>
-            
-            </div>            
-        </div>
-      );
-    }
-
-    else if (this.state.currentCaseIdx === -1) {
-      return (
-        <div className = "testpage-background">
-            <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
-            <div> 
-              Your test has not started yet.<br/>
-              Now, you have time for getting familiar with the layout and buttons.<br/>
-              The keyboard at the bottom consists of 24 buttons representing 
-              6 sets of shapes: lines, arcs, dots, stars and square, arrows, and circles.
-              By clicking on a button you are adding a corresponding shape to your answer.
-              By clicking it again you are revoking your choice. Please try.<br/>
-
-              The Reset button will clear your answer completely. Try this one, too.<br/>
-
-              The Start Test will load the first test case and the test will begin.
-
+              <h3 id="current-case">
+                Case: {this.state.currentCaseIdx + 1} /{" "}
+                {this.state.cases.length}
+              </h3>
             </div>
+            <div>
+              <h3>
+                <span>Complexity: </span>
+                <span id="complexity">{curTest.complexity}</span>
+              </h3>
+            </div>
+          </div>
+          <div>
+            <img src="/robot.gif" alt="" width="500" />
+          </div>
         </div>
       );
-    }
-    else {
+    } else if (this.state.currentCaseIdx === -1) {
+      return (
+        <div className="testpage-background">
+          <div className="startPageFlex">
+            <div className="startTestCase">
+              <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
+            </div>
+            <div className="textStartPage">
+              <span>Your test has not started yet.</span>
+              <br />
+              Now, you have time for getting familiar with the layout and
+              buttons.
+              <br />
+              The keyboard at the bottom consists of <span>
+                24 buttons
+              </span>{" "}
+              representing <br />
+              6 sets of shapes: lines, arcs, dots, stars and square, arrows, and
+              circles.
+              <br />
+              By clicking on a button you are adding a corresponding shape to
+              your <br />
+              answer. By clicking it again you are revoking your choice. Please
+              try.
+              <br />
+              The <span>Reset button</span> will clear your answer completely.
+              Try this one, too.
+              <br />
+              The <span>Start Test</span> button will load the first test case
+              and the test will begin.
+            </div>
+          </div>
+        </div>
+      );
+    } else {
       const curTest = this.state.test;
       const curCase = this.state.cases[this.state.currentCaseIdx];
       return (
-        <div className = "testpage-background">
-            <div id="header">
-                <div><h2><span>Test: </span> <span id="test-name">{curTest.testName}</span></h2></div>   
-                <div>
-                    <h3 id="current-case">
-                      Case: {this.state.currentCaseIdx + 1} / {this.state.cases.length}
-                    </h3>
-                </div>   
-                <div><h3><span>Complexity: </span><span id="complexity">{curTest.complexity}</span></h3></div>  
+        
+        <div className="testpage-background2">
+          <div id="header">
+            <div>
+              <h2>
+                <span>Test: </span>{" "}
+                <span id="test-name">{curTest.testName}</span>
+              </h2>
             </div>
-            <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
-            {(this.state.currentCaseIdx === 0) ?
-              <div> 
-                Your first test case is there!<br/>
-
-                In the  3x3 matrix you see a mix of shapes.<br/>
-                Your first step is to identify the shape categories used.<br/>
-                Then, for each category, please analyze the logic applied to the 
-                category in rows 1 and 2. <br/>Finally, choose your answer in row 3, using the same logic.<br/>
-
-                When you are ready with your answer please Submit to proceed to the next test case.<br/>
-
-                If you are interested, here is a small tip for you: the "logic" is based on the basic
-                set operations: union, intersection, complement, and symmetric difference.<br/>
-                -------- wiki link ----------
-              </div>
-              : null              
-              }
+            <div>
+              <h3 id="current-case">
+                Case: {this.state.currentCaseIdx + 1} /{" "}
+                {this.state.cases.length}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <span>Complexity: </span>
+                <span id="complexity">{curTest.complexity}</span>
+              </h3>
+            </div>
+          </div>
+          <div className='startPageFlex2'>
+          <div className='startTestCase2'>
+               <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
+          </div>
+          {this.state.currentCaseIdx === 0 ? (
+            <div className='textTestPage'>
+              Your first test case is there!
+              <br />
+              In the 3x3 matrix you see a mix of shapes.
+              <br />
+              Your first step is to identify the shape categories used.
+              <br />
+              Then, for each category, please analyze the logic applied to the
+              category in rows 1 and 2. <br />
+              Finally, choose your answer in row 3, using the same logic.
+              <br />
+              When you are ready with your answer please Submit to proceed to
+              the next test case.
+              <br />
+              If you are interested, here is a small tip for you: the "logic" is
+              based on the basic set operations: union, intersection,
+              complement, and symmetric difference.
+              <br />
+             
+            </div>
+          ) : null}
+          </div>
         </div>
       );
     }
