@@ -37,7 +37,7 @@ class IqLogin extends Component {
   render() {
     return (
       <div>
-        <h2>Login</h2>
+        <h2 className = "signup-login-header">Login</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label htmlFor="username">Username: </Form.Label>

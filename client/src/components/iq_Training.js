@@ -17,9 +17,9 @@ class IqTraining extends Component {
               <input className="trainingsPage-button" type="submit" value="Start test"/>
           </form> */}
 
-          <button className="trainingsPage-button">
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/new">Start test</Link>            
-          </button>    
+          
+          <Link style={{ textDecoration: 'none', color: 'white' }} to="/test/new"><button className="trainingsPage-button">Start test</button> </Link>            
+             
           
           <p>Your results you can find under
             {/* <a href="/resultlist"> Test Result List</a> */}

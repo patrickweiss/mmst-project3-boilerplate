@@ -1,4 +1,4 @@
-const numOfCases = 10;          //number of cases in the test
+const numOfCases = 5;          //number of cases in the test
 const maxCaseComplexity = 3;    //max case complexity 1-Low, 2-Medium, 3-High
 
 const mongoose = require('mongoose');
