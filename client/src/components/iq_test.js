@@ -197,14 +197,12 @@ export default class IQttyTest extends Component {
               <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
             </div>
             <div className="textStartPage">
-              <span>Your test has not started yet.</span>
+              Your test has not started yet.
               <br />
               Now, you have time for getting familiar with the layout and
               buttons.
-              <br />
-              The keyboard at the bottom consists of <span>
-                24 buttons
-              </span>{" "}
+              <br /><br />
+              The keyboard at the bottom consists of <span>24 buttons</span>{" "}
               representing <br />
               6 sets of shapes: lines, arcs, dots, stars and square, arrows, and
               circles.
@@ -213,10 +211,10 @@ export default class IQttyTest extends Component {
               your <br />
               answer. By clicking it again you are revoking your choice. Please
               try.
-              <br />
+              <br /><br />
               The <span>Reset button</span> will clear your answer completely.
               Try this one, too.
-              <br />
+              <br /><br />
               The <span>Start Test</span> button will load the first test case
               and the test will begin.
             </div>
@@ -258,16 +256,16 @@ export default class IQttyTest extends Component {
               Your first test case is there!
               <br />
               In the 3x3 matrix you see a mix of shapes.
-              <br />
+              <br /><br />
               Your first step is to identify the shape categories used.
               <br />
-              Then, for each category, please analyze the logic applied to the
+              Then, <b>for each category</b>, please analyze the logic applied to the
               category in rows 1 and 2. <br />
               Finally, choose your answer in row 3, using the same logic.
-              <br />
+              <br /><br />
               When you are ready with your answer please Submit to proceed to
               the next test case.
-              <br />
+              <br /><br />
               If you are interested, here is a small tip for you: the "logic" is
               based on the basic set operations: union, intersection,
               complement, and symmetric difference.
