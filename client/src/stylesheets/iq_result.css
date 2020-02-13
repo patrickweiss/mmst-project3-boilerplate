@@ -5,17 +5,17 @@
 
 
 .resultPage {
+  
   display:flex;
   padding-top: 30px;
   flex-direction: column;
   align-items: left;
   background:url(../iq_resultlist.jpg);  
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position-x: 100%;
-  background-position-y: 100%;
-  height: 45vw;
-  margin-top:4rem;
+  background-position-y: top;
+  height: 100vh;
   
 }
 
@@ -23,12 +23,14 @@
 
 /* Header */
 .resultHeader {
-  margin-top: 50px;
+  margin-top: 150px;
   margin-left: 150px;
+ 
 }
 
 /* Tabelle für iq_result */
 .tableresult { 
+      margin-top:6rem;
       display: table;
       margin-top: 50px;
       display: table; 

@@ -16,12 +16,19 @@
 }
 
 .resultlistPage {  
-  background:url(../iq_resultlist.jpg);  
+ /*  background:url(../iq_resultlist.jpg);  
   background-repeat: no-repeat;
   background-size: 100%;
   background-position-x: 100%;
   background-position-y: 100%;
-  height: 50vw;    
+  height: 100vh; */
+  background:url(../iq_resultlist.jpg);  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 100%;
+  background-position-y: top;
+  height: 93.55vh;
+  margin-top:4rem;
 }
 
 
