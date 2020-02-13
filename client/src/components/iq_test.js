@@ -172,17 +172,18 @@ export default class IQttyTest extends Component {
               </h2>
             </div>
             <div>
-              <h3 id="current-case">
-                Case: {this.state.currentCaseIdx + 1} /{" "}
-                {this.state.cases.length}
-              </h3>
-            </div>
-            <div>
               <h3>
                 <span>Complexity: </span>
                 <span id="complexity">{curTest.complexity}</span>
               </h3>
             </div>
+            <div>
+              <h3 id="current-case">
+                Case: {this.state.currentCaseIdx + 1} /{" "}
+                {this.state.cases.length}
+              </h3>
+            </div>
+           
           </div>
           <div>
             <img src="/robot.gif" alt="" width="500" />
@@ -191,7 +192,7 @@ export default class IQttyTest extends Component {
       );
     } else if (this.state.currentCaseIdx === -1) {
       return (
-        <div className="testpage-background">
+        <div >
           <div className="startPageFlex">
             <div className="startTestCase">
               <TestCase case={null} nextCaseHandler={this.nextCaseHandler} />
@@ -221,24 +222,18 @@ export default class IQttyTest extends Component {
           </div>
         </div>
       );
-    } else {
+    } else if (this.state.currentCaseIdx === 0) {
       const curTest = this.state.test;
       const curCase = this.state.cases[this.state.currentCaseIdx];
       return (
         
-        <div className="testpage-background2">
+        <div >
           <div id="header">
-            <div>
+            <div >
               <h2>
                 <span>Test: </span>{" "}
                 <span id="test-name">{curTest.testName}</span>
               </h2>
-            </div>
-            <div>
-              <h3 id="current-case">
-                Case: {this.state.currentCaseIdx + 1} /{" "}
-                {this.state.cases.length}
-              </h3>
             </div>
             <div>
               <h3>
@@ -246,12 +241,19 @@ export default class IQttyTest extends Component {
                 <span id="complexity">{curTest.complexity}</span>
               </h3>
             </div>
+            <div>
+              <h3 id="current-case">
+                Case: {this.state.currentCaseIdx + 1} /{" "}
+                {this.state.cases.length}
+              </h3>
+            </div>
+            
           </div>
           <div className='startPageFlex2'>
           <div className='startTestCase2'>
                <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
           </div>
-          {this.state.currentCaseIdx === 0 ? (
+
             <div className='textTestPage'>
               Your first test case is there!
               <br />
@@ -272,10 +274,46 @@ export default class IQttyTest extends Component {
               <br />
              
             </div>
-          ) : null}
+
           </div>
         </div>
       );
+    }
+    else {
+      const curTest = this.state.test;
+      const curCase = this.state.cases[this.state.currentCaseIdx];
+      return (
+        
+        <div className='testpage-background2' >
+          <div id="header">
+            <div >
+              <h2>
+                <span>Test: </span>{" "}
+                <span id="test-name">{curTest.testName}</span>
+              </h2>
+            </div>
+            <div>
+              <h3>
+                <span>Complexity: </span>
+                <span id="complexity">{curTest.complexity}</span>
+              </h3>
+            </div>
+            <div>
+              <h3 id="current-case">
+                Case: {this.state.currentCaseIdx + 1} /{" "}
+                {this.state.cases.length}
+              </h3>
+            </div>
+           
+          </div>
+          <div className='startPageFlex2'>
+          <div className='startTestCase2'>
+               <TestCase case={curCase} nextCaseHandler={this.nextCaseHandler} />
+          </div>
+          </div>
+        </div>
+      );
+
     }
   }
 }

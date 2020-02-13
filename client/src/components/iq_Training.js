@@ -39,11 +39,11 @@ class IqTraining extends Component {
               A matrix consists of nine boxes. One box is empty.<br/>
               Your task is to discover logical connections and compose<br/>
               the empty box based on the rule you found.<br/>            
-              Please select your options & start a test.<br/>           
+              Please select your options and start a test.<br/>           
 
             <section id="selection">
               <article>
-                <h3>Select the complexity of your Test:</h3>
+                <h3>Select complexity :</h3>
                 <li>
                   <label>
                     <input
@@ -53,7 +53,7 @@ class IqTraining extends Component {
                       checked={true}
                       onChange={this.handleComplexity}
                     />
-                    Low
+                    &nbsp;Low
                   </label>
                 </li>
 
@@ -65,7 +65,7 @@ class IqTraining extends Component {
                       value="Medium"
                       onChange={this.handleComplexity}
                     />
-                    Medium
+                       &nbsp;Medium
                   </label>
                 </li>
 
@@ -77,7 +77,7 @@ class IqTraining extends Component {
                       value="High"
                       onChange={this.handleComplexity}
                     />
-                    High
+                   &nbsp; High
                   </label>
                 </li>
 
@@ -89,12 +89,12 @@ class IqTraining extends Component {
                       value="Random"
                       onChange={this.handleComplexity}
                     />
-                    Random
+                   &nbsp; Random
                   </label>
                 </li>
               </article>
               <article>
-                <h3>Time limit?</h3>
+                <h3>Time limit ?</h3>
 
                 <li>
                   <label>
@@ -104,7 +104,7 @@ class IqTraining extends Component {
                       value="yes"
                       onChange={this.handleTimeout}
                     />
-                    Yes (90 sec per test case)
+                   &nbsp;Yes (90 sec per test case)
                   </label>
                 </li>
                 <li>
@@ -116,7 +116,7 @@ class IqTraining extends Component {
                       checked={true}
                       onChange={this.handleTimeout}
                     />
-                    No
+                    &nbsp;No
                   </label>
                 </li>
               </article>
