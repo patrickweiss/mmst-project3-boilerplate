@@ -1,6 +1,6 @@
 .testpage-background {
   padding: 2rem;
-  background: url(../iq_matrixBlue.png);
+  background: url(./iq_matrixBlue.png);
   background-repeat: no-repeat;
   background-size: 60%;
   background-position-x: 100%;
@@ -8,11 +8,12 @@
 }
 
 .testpage-background2 {
-  background: url(../iq_matrixBlue.png);
+  background: url(./iq_matrixBlue.png);
   background-repeat: no-repeat;
   background-size: 60%;
   background-position-x: 100%;
   background-position-y:  top;
+  
 }
 
 #header {
@@ -208,35 +209,20 @@
   margin-left: 50px;
 }
 
-.more-less-btn{
-  height: 40px;
-  width: 90px;
-  background-color: #2081c3;
-  color: white;
-  border-radius: 4px;  
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-}
-
-.more-less-btn:hover {
-  background-color: green;
-  color: white;
-}
 .startPageFlex{
  display: flex;
  margin-top: 4rem;
  width: 1200px;
+ background-color: red;
 }
 
 .textStartPage{
-  margin-top: 310px;
+  margin-top: 340px;
   background-color: #2081c3;
   padding: 10px;
   color: white;
   width: 600px;
-  height: 300px;
+  height: 325px;
   opacity: 0.9;
 }
 
@@ -256,7 +242,7 @@ span {
   
   width: 1000px;
   height: 500px;
- 
+ border: red 2px solid;
  }
 
 .startTestCase2{
@@ -268,12 +254,12 @@ span {
 
 
 .textTestPage{
-  margin-top: 200px;
+  margin-top: 100px;
   background-color: #2081c3;
   padding: 10px;
   color: white;
   width: 600px;
-  height: 350px;
+  height: 400px;
   opacity: 0.9;
 }
 
