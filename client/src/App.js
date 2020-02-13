@@ -1,15 +1,18 @@
 import React from "react";
 import "./App.css";
-import {Switch, Route, Redirect } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Startpage from "./components/Startpage";
-import Projects from "./components/Projects";
-import ProjectDetail from "./components/ProjectDetail";
-import TaskDetail from "./components/TaskDetail";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
+import IQttyTest from "./components/iq_test.js";
+import "./App.css";
+import { Switch, Route, Redirect } from "react-router-dom";
+import IqNavbar from "./components/iq_Navbar";
+import IqStartpage from "./components/iq_Startpage";
+import IqSignup from "./components/iq_Signup";
+import IqLogin from "./components/iq_Login";
+import IqTraining from "./components/iq_Training";
+import IqResultlist from "./components/iq_Resultlist";
+import Iqresult from "./components/iq_result";
+import TestReview from "./components/iq_test-review"
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     user: this.props.user
   };
@@ -20,35 +23,92 @@ class App extends React.Component {
     });
   };
 
-  projectsRoute = props => {
+  trainingRoute = props => {
     if (this.state.user) {
-      return <Projects {...props} />;
+      return <IqTraining {...props} />;
     } else {
       return <Redirect to="/" />;
     }
-  }
+  };
+
+  resultListRoute = props => {
+    if (this.state.user) {
+      return <IqResultlist {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  };
+
+  resultRoute = props => {
+    if (this.state.user) {
+      return <Iqresult />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  };
+
+  testNewRoute = props => {
+    if (this.state.user) {
+      return (
+        <IQttyTest {...props} userName={this.state.user.username}/>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
+  };
 
   render() {
+
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        <IqNavbar user={this.state.user} setUser={this.setUser} />
         <Switch>
-          <Route exact path="/" component={Startpage} />
-          <Route exact path="/signup" render={
-            props => <Signup {...props} setUser={this.setUser} />
-          }/>
-          <Route exact path="/login" render={
-            props => <Login {...props} setUser={this.setUser} />
-          }/>
-          <Route exact path="/projects" render={this.projectsRoute}/>
-          <Route exact path="/projects/:id" render={
-            props => <ProjectDetail user={this.state.user} {...props} />
-          }/>
-          <Route exact path="/tasks/:id" component={TaskDetail} />
+
+          <Route 
+            exact 
+            path="/test/id/:testId" 
+            render= {props => <IQttyTest {...props} />}
+          />
+          <Route 
+            exact 
+            path="/test/new/:complexity/:timeout" 
+            render= {this.testNewRoute}
+          />          
+          <Route exact path="/review/id/:resultId" render= {
+            props => <TestReview {...props} /> } 
+          />
+          <Route 
+            exact 
+            path="/" 
+            component={IqStartpage} 
+          />
+          <Route
+            exact
+            path="/signup"
+            render={props => <IqSignup {...props} setUser={this.setUser} />}
+          />
+          <Route
+            exact 
+            path="/login" 
+            render={props => <IqLogin {...props} setUser={this.setUser} />}
+          />
+          <Route 
+            exact 
+            path="/training" 
+            render={this.trainingRoute}
+          />
+          <Route 
+            exact 
+            path="/resultlist" 
+            render={this.resultListRoute} 
+          />
+          <Route 
+            exact 
+            path="/result" 
+            render={this.resultRoute} 
+          />
         </Switch>
       </div>
     );
   }
 }
-
-export default App;

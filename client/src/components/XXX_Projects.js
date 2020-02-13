@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ProjectList from "./ProjectList";
-import ProjectForm from "./ProjectForm";
+import ProjectList from "./XXX_ProjectList";
+import ProjectForm from "./XXX_ProjectForm";
 
 class Projects extends Component {
   state = {

@@ -1,0 +1,280 @@
+/* .testpage-background {
+  padding: 2rem;
+  background: url(../iq_matrixBlue.png);
+  background-repeat: no-repeat;
+  background-size: 65%;
+  background-position-x: 100%;
+  background-position-y: top;
+  height: 100vh;
+} */
+
+.testpage-background2 {
+  background: url(../iq_matrixBlue.png);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position-x: 130%;
+  background-position-y:  top;
+}
+
+#header {
+  margin-left: 25px;
+  margin-top: 85px;
+}
+
+.menu-btn-off {
+    background-color: white;
+    color: black;
+    border: 3px solid green; 
+    border-radius: 5px;
+    margin: 2px;;
+    width:60px;
+    height:60px;
+    padding: 3px;    
+  
+}
+
+.menu-btn-on {
+  background-color: white;
+  color: black;
+  border: 3px solid orange; 
+  margin: 2px;;
+  width:60px;
+  height:60px;
+  padding: 3px;
+  border-radius: 5px
+}
+
+.nav-btn {
+  width: 160px;  
+  border: 3px solid #2081c3;
+  background-color: #2081c3; 
+  color: white;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 7px;  
+  font-size: 15px;
+}
+.nav-btn:hover {
+  background-color: green;
+  color: white;
+}
+
+.nav-btn-init {
+  width: 160px;
+  border: solid;
+  color: white;
+  border: 3px solid green;
+  background-color: green; 
+  border-radius: 4px;
+  margin: 10px;
+  padding: 7px;
+  font-size: 15px;     
+}
+
+
+@keyframes shake {
+	25%
+		{-webkit-transform: translateX(5px);
+		transform: translateX(5px)}
+	75%
+		{-webkit-transform: translateX(-5px);
+		transform: translateX(-5px)}
+}
+
+.shake:hover {
+  -webkit-animation: shake ease-in 500ms infinite;
+  animation: shake 500ms ease-in infinite
+}
+
+
+#test-container {
+  /*position: relative;*/
+  /*z-index: 1;*/
+  width:350px;
+  display: flex;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+#test-and-loader {
+  padding-top: 80px;
+  width: 400px;
+  display: flex;
+  align-content: space-between;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+}
+
+#nav-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.menu-row {
+  margin-left: 20px;
+  width : 200px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.board-row {
+  width : 200px;
+  display:flex;
+  justify-content: flex-start;
+}
+
+.board-cell {
+    border: solid lightgray;
+    margin: 2px;
+    width:56px;
+    height:56px;
+}
+
+.canvas-matrix {
+  margin: 0;
+}
+
+.answer-row {
+  width : 180px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.test-rev-row {
+  width : 300px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.case-rev {
+  /*width : 600px; */
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.case-comp-list {
+  width: 500px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.case-comp {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* .op-desc {
+
+} */
+
+.formula-row {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.formula-cell {
+  border: none;
+  margin: 2px;
+  width:56px;
+  height:56px;
+}
+
+.answer-cell-ok {
+  margin: 2px;
+  width:56px;
+  height:56px;
+}
+
+.answer-cell-err {
+  border: solid red;
+  margin: 2px;
+  width:56px;
+  height:56px;
+}
+
+.error-msg{
+  margin-top: 300px;
+  margin-left: 50px;
+}
+
+.more-less-btn{
+  height: 40px;
+  width: 90px;
+  background-color: #2081c3;
+  color: white;
+  border-radius: 4px;  
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.more-less-btn:hover {
+  background-color: green;
+  color: white;
+}
+.startPageFlex{
+ display: flex;
+ margin-top: 4rem;
+ width: 1200px;
+
+}
+
+.textStartPage{
+  margin-top: 150px;
+  margin-left: 150px;
+  background-color: #2081c3;
+  padding: 30px;
+  color: white;
+  width: 800px;
+  height: 400px;
+  opacity: 0.9;
+}
+
+.startTestCase{
+  display: flex;
+  width: 500px;
+}
+
+span {
+  font-weight: bold;
+}
+
+/*<<<<<<<<<<<<<<<<<TestPage >>>>>>>>>*/
+
+.startPageFlex2{
+  display: flex;
+  width: 1100px;
+  height: 550px;
+ 
+ }
+
+.startTestCase2{
+  display: flex;
+  width: 450px;
+  padding-bottom: 200px;
+}
+
+
+.textTestPage{
+  margin-top: 65px;
+  margin-left: 60px;
+  background-color: #2081c3;
+  padding: 30px;
+  color: white;
+  width: 700px;
+  height: 400px;
+  opacity: 0.9;
+}
+

@@ -1,0 +1,108 @@
+/* <<<<<<<<<<<<<<< result.js >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* Seite */
+
+
+
+.resultPage {
+  
+  display:flex;
+  padding-top: 30px;
+  flex-direction: column;
+  align-items: left;
+  background:url(../iq_resultlist.jpg);  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 100%;
+  background-position-y: top;
+  height: 100vh;
+  
+}
+
+
+
+/* Header */
+.resultHeader {
+  margin-top: 150px;
+  margin-left: 150px;
+ 
+}
+
+/* Tabelle für iq_result */
+.tableresult { 
+      margin-top:6rem;
+      display: table;
+      margin-top: 50px;
+      display: table; 
+      border-collapse:collapse; 
+      width: 520px;
+      margin-left: 150px;
+    }
+.resulttr { 
+      display:table-row;
+      line-height: 35px;
+      background-color: white;
+      font-size: 16px;
+    }
+.resulttr1 { 
+      display:table-row;
+      /*background-color: rgb(145, 218, 243);*/
+      background-color:  darkgrey;
+      line-height: 35px;
+      color: white;
+      font-size: 16px;;
+    }
+.resulttd { 
+      display:table-cell; 
+      text-align: left;
+  
+      padding:5px; 
+    }
+
+.resultth {
+  display:table-cell; 
+  text-align: left;
+  
+  padding:5px; 
+  font-weight: bold;
+}
+/* result footer*/
+.resultfooter {
+  margin-top: 35px;
+  margin-left: 50px;;
+}
+
+/* Buttonbox uand button */
+
+.rbutton {
+  border-radius: 4px;
+  height: 50px;
+  width: 160px;
+  background-color:  #007bff;
+  color: white;
+  margin: 5px;
+  
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.rLink {
+  color: white;
+  text-decoration: none;
+}
+
+.rbutton:hover {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+}
+
+.buttonbox {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+  width: 600px;
+  margin-left: 285px;
+}
+
+/* <<<<<<<<<<< ENDE Tabelle iq_result >>>>>>>>>> */

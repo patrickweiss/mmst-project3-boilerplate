@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { login } from "../services/auth";
 import { Alert, Form, Button } from "react-bootstrap";
 
-class Login extends Component {
+class IqLogin extends Component {
   state = {
     username: "",
     password: "",
@@ -29,7 +29,7 @@ class Login extends Component {
         // lift the data up to the App state
         this.props.setUser(data);
         // redirect to "/projects"
-        this.props.history.push("/projects");
+        this.props.history.push("/training");
       }
     });
   };
@@ -37,10 +37,10 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h2>Login</h2>
+        <h2 className = "signup-login-header">Login</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Label htmlFor="username">User name: </Form.Label>
             <Form.Control
               type="text"
               name="username"
@@ -69,4 +69,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default IqLogin;

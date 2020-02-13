@@ -1,10 +1,10 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -22,22 +22,31 @@
 }
 
 form {
-  max-width: 50vw;
+  max-width: 30vw;
   margin: 0 auto;
 }
 
-button {
+/* button {
   margin: 1px;
-}
+} */
 
 .nav a {
   color: white;
-  margin: 5px;
+  margin: 15px;
 }
 
-h1,
+nav{
+  height: 75px;  
+}
+/* h1,
 h2 {
   margin-top: 20px;
+} */
+
+.signup-login-header {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .nav a:hover {
@@ -45,11 +54,11 @@ h2 {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.projects-container {
+/* .projects-container {
   display: flex;
   padding: 5vh 5vw;
 }
 
 .projects-container > * {
   flex: 1;
-}
+} */

@@ -1,0 +1,63 @@
+.trainingsPage-container {  
+  background:url(../iq_grid.jpg);  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 60%;
+  background-position-y: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center; 
+     
+}
+
+.trainingsPage-text {
+  margin-left: 5rem;    
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;  
+  font-size: 25px;
+  color: darkslategrey;       
+}
+
+.trainingsPage-text h1{
+  font-weight: bold;
+  color: #2081c3;
+  padding-bottom: 2rem;
+}
+
+.button-container {
+  margin-left: 10rem;
+  padding-top: 1.5rem;  
+}
+
+
+.trainingsPage-button {
+  height: 40px;
+  width: 160px;
+  background-color: #2081c3;
+  color: white;
+  border-radius: 4px;  
+  font-size: 15px;      
+}
+
+.trainingsPage-button:hover {
+  background-color: green;
+  color: white;
+}
+
+section h3{
+  font-style: oblique;
+  font-weight: bold;
+  color: #2081c3;  
+  padding-top: 2rem;
+}
+
+#selection{
+display: flex;
+justify-content: space-between;
+width: 50vw;
+list-style-type: none;
+font-size: 20px;
+}
