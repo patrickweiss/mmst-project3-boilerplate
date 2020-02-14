@@ -57,6 +57,16 @@ export default class App extends React.Component {
     }
   };
 
+  testAgainRoute = props => {
+    if (this.state.user) {
+      return (
+        <IQttyTest {...props} userName={this.state.user.username}/>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
+  };
+
   render() {
 
     return (
@@ -67,7 +77,7 @@ export default class App extends React.Component {
           <Route 
             exact 
             path="/test/id/:testId" 
-            render= {props => <IQttyTest {...props} />}
+            render= {this.testAgainRoute}
           />
           <Route 
             exact 

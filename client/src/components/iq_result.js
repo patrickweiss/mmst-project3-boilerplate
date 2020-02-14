@@ -9,11 +9,11 @@ export class Iqresult extends Component {
     };
   
     componentDidMount() {
-      console.log("App --> componentDidMount()")
+      //console.log("App --> componentDidMount()")
       axios.get("/api/results")
           .then(response => {
-            console.log("Response Data", response.data)
-              console.log("App --> Promise resolved")
+            //console.log("Response Data", response.data)
+              //console.log("App --> Promise resolved")
               this.setState({result: response.data});
           })
       .catch(err=>{
