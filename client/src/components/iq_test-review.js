@@ -66,7 +66,7 @@ export default class TestReview extends Component {
     if (!test) return (null);  //render nothing if there is no test data
 
     const d = new Date(result.createdAt);
-    const resDate = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+    const resDate = d.getDate() + "/" + (1+d.getMonth()) + "/" + d.getFullYear();
     const resTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
     //console.log(">>>>>>RESULT OBJECT", result);

@@ -11,11 +11,11 @@ class IqResultlist extends Component {
   };      
          
   componentDidMount() {
-      console.log("AllResults --> componentDidMount()")
+      //console.log("AllResults --> componentDidMount()")
       axios.get("/api/resultlist")
           .then(response => {
-              console.log("AllResults --> Promise resolved")
-              console.log("Promise resolved Data", response.data)
+              //console.log("AllResults --> Promise resolved")
+              //console.log("Promise resolved Data", response.data)
               this.setState({ results: response.data })
           })
           .catch(err => {
@@ -30,7 +30,7 @@ class IqResultlist extends Component {
       let score = result.score;
       let resultInPercentage = Math.round(score/caseNumber * 100)
       let d = new Date(result.createdAt);
-      let resDate = d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate();
+      let resDate = d.getFullYear() + "/" + (1+d.getMonth()) + "/" + d.getDate();
       let resTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
       return (
