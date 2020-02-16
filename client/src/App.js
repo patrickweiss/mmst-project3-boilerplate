@@ -9,7 +9,7 @@ import IqSignup from "./components/iq_Signup";
 import IqLogin from "./components/iq_Login";
 import IqTraining from "./components/iq_Training";
 import IqResultlist from "./components/iq_Resultlist";
-import Iqresult from "./components/iq_result";
+//import Iqresult from "./components/iq_result";
 import TestReview from "./components/iq_test-review"
 
 export default class App extends React.Component {
@@ -34,14 +34,6 @@ export default class App extends React.Component {
   resultListRoute = props => {
     if (this.state.user) {
       return <IqResultlist {...props} />;
-    } else {
-      return <Redirect to="/" />;
-    }
-  };
-
-  resultRoute = props => {
-    if (this.state.user) {
-      return <Iqresult />;
     } else {
       return <Redirect to="/" />;
     }
@@ -111,11 +103,6 @@ export default class App extends React.Component {
             exact 
             path="/resultlist" 
             render={this.resultListRoute} 
-          />
-          <Route 
-            exact 
-            path="/result" 
-            render={this.resultRoute} 
           />
         </Switch>
       </div>
