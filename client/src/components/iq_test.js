@@ -11,11 +11,12 @@ export default class IQttyTest extends Component {
     this.caseStartTimestamp = 0;
     this.testTime = 0; //sum of case times
     this.caseLimit =
-      this.props.match.params.timeout === "yes" ? 90 * 1000 : 60 * 60 * 1000; //time limit per case
+    this.props.match.params.timeout === "yes" ? 90 * 1000 : 60 * 60 * 1000; //time limit per case
     this.animLimit = 2 * 1000; //time between cases
     this.caseTimer = 0;
     this.loadTimer = 0;
     this.currentScore = 0;
+    this.testResult = null;
 
     this.state = {
       test: null, //Test obj from DB
@@ -55,9 +56,10 @@ export default class IQttyTest extends Component {
         ? this.currentScore + 1
         : this.currentScore;
 
-      this.finishTest(answersCopy);
+      this.finishTest(answersCopy);  //Promise inside!
 
-      this.setState({ answers: answersCopy, animOn: false, endOfTest: true });
+      this.setState({answers: answersCopy, animOn: false, endOfTest: true });
+
       return;
     }
 
@@ -99,10 +101,8 @@ export default class IQttyTest extends Component {
   }
 
   finishTest(answers) {
-    //NOTE: In order to store answers, a model extension will be required
-    //Suggestion: store the testId as well
 
-    const testResult = {
+    this.testResult = {
       userName: this.props.userName,
       testName: this.state.test.testName,
       complexity: this.state.test.complexity,
@@ -113,15 +113,6 @@ export default class IQttyTest extends Component {
       testId: this.state.test._id
     };
 
-    //Send result to the DB
-    axios
-      .post("/api/results", testResult)
-      .then(fromServer => {
-        //console.log("Result stored. Response from server: " + fromServer.data);
-      })
-      .catch(err => {
-        console.log("ERROR while storing the test result: ", err);
-      });
   }
 
   componentDidMount() {
@@ -145,20 +136,20 @@ export default class IQttyTest extends Component {
         });
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.caseTimer);
+    clearTimeout(this.loadTimer);
+  }
+
   render() {
-    /*if (!this.state.test) 
-      return (
-        <div className='error-msg'>
-          <h3>Sorry! No test available</h3>
-        </div>
-      );*/
 
     if (this.state.endOfTest)
       return (
         <div>
-          <Iqresult />
+          <Iqresult result={this.testResult}/>
         </div>
       );
+
     else if (this.state.animOn) {
       //const curTest = this.props.test;
       const curTest = this.state.test;
